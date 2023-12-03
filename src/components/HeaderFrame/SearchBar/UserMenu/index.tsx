@@ -16,7 +16,7 @@ const UserMenuFrame = () => {
 	const { data } = useAppSelector((state: RootState) => state.profile);
 	const { theme } = useAppSelector((state: RootState) => state.theme);
 	const dispatch = useAppDispatch();
-	const popupRef = useRef(null);
+	const popupRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		const handleClickOutside = (event:any) => {

@@ -1,11 +1,11 @@
 "use client";
 
+import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
 import React from "react";
-import { useSelector } from "react-redux";
 
 const CardSkeleton = () => {
-	const { theme } = useSelector((state: RootState) => state.theme);
+	const { theme } = useAppSelector((state: RootState) => state.theme);
 	return (
 		<div
 			className={`w-full max-w-[320px] min-w-[280px] h-auto p-3 ${

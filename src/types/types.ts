@@ -2,18 +2,24 @@ export type ChildProps = {
 	children:React.ReactNode
 }
 
-export interface Signup {
-	username:string,
-	username_error:boolean,
+export interface LoginType {
 	email:string,
-	email_error:boolean,
-	password:string,
-	password_error:boolean,
+	password:string
 }
 
-export interface Login {
+export interface SignupType{
 	email:string,
-	email_error:boolean,
 	password:string,
-	password_error:boolean,
+	username:string
+}
+
+export interface ForgetType {
+	email:string
+}
+
+export enum HttpMethod {
+	GET = 'GET',
+	POST = 'POST',
+	PUT = 'PUT',
+	DELETE = 'DELETE',
 }

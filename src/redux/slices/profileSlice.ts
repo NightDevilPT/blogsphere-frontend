@@ -1,5 +1,5 @@
 // slices/dataSlice.ts
-import { axiosInstance } from "@/services/Request";
+import apiService from "@/services/Request";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 // Define the state type
@@ -23,7 +23,7 @@ const fetchProfileData = createAsyncThunk(
 		try {
 			const tokenData = window.localStorage.getItem("authToken");
 			if (!tokenData) return null;
-			const data = await axiosInstance.get(`/user/get-profile`, {
+			const data = await apiService.get(`/user/get-profile`, {
 				headers: {
 					Authorization: `Bearer ${window.localStorage.getItem(
 						"authToken"

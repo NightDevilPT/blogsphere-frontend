@@ -3,6 +3,24 @@
 @tailwind utilities;
 
 
+html[data-theme="dark"]{
+	--primary-bg:#020617;
+	--secondary-bg:#0f172a;
+	--primary-fg:#e2e8f0;
+	--secondary-fg:#64748b;
+	--highlight:#06b6d4;
+	--divider:#1e293b;
+}
+
+html[data-theme="light"]{
+	--primary-bg:#f1f5f9;
+	--secondary-bg:#cbd5e1;
+	--primary-fg:#111827;
+	--secondary-fg:#374151;
+	--highlight:#06b6d4;
+	--divider:#6b7280;
+}
+
 .loader {
 	display: flex;
 	justify-content: center;

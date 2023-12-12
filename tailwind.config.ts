@@ -20,6 +20,14 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors:{
+        'primary-bg':'var(--primary-bg)',
+        'secondary-bg':'var(--secondary-bg)',
+        'border':'var(--divider)',
+        'highlight':'var(--highlight)',
+        'primary-fg':'var(--primary-fg)',
+        'secondary-fg':'var(--secondary-fg)',
+      }
     },
   },
   plugins: [],

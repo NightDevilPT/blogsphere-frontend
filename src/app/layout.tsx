@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 import ReduxProvide from "@/layouts/ReduxProvide";
 import FirstCallFunction from "@/layouts/FirstCallFunction";
-import ThemeLayout from "@/layouts/ThemeLayout";
 
 export const metadata: Metadata = {
 	title: "BlogSphere",
@@ -19,14 +18,12 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
+		<html lang="en" data-theme="dark">
 			<body
 				className={`w-full h-[100vh] overflow-hidden flex justify-center items-center flex-col`}
 			>
 				<ReduxProvide>
-					<ThemeLayout>
-						<FirstCallFunction>{children}</FirstCallFunction>
-					</ThemeLayout>
+					<FirstCallFunction>{children}</FirstCallFunction>
 				</ReduxProvide>
 				<ToastContainer autoClose={2000} />
 			</body>

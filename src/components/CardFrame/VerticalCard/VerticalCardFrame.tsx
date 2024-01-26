@@ -14,7 +14,7 @@ const VerticalCardFrame = ({ blogs }: IProps) => {
 			className={`min-w-[320px] h-auto flex justify-start items-start flex-col bg-secondary-bg rounded overflow-hidden`}
 		>
 			<div className={`w-full h-40 rounded`}>
-				<img src={blogs.url} className={`w-full h-full object-cover`} />
+				<img src={blogs.url} className={`w-full h-full object-cover`} alt="blogs-images" />
 			</div>
 			<div
 				className={`w-full h-auto p-4 flex justify-start items-start flex-col gap-2`}

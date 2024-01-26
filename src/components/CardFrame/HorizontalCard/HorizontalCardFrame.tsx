@@ -15,7 +15,7 @@ const HorizontalCardFrame = ({ blogs }: IProps) => {
 			className={`relative group min-w-[320px] h-auto grid-cols-2 gap-3 bg-secondary-bg rounded overflow-hidden cursor-pointer`}
 		>
 			<div className={`w-full h-48 rounded bg-border`}>
-				<img src={blogs.url} className={`w-full h-full object-cover`} />
+				<img src={blogs.url} className={`w-full h-full object-cover`} alt="blogs-image" />
 			</div>
 			<div
 				className={`w-full h-48 absolute left-0 -bottom-[170px] group-hover:bottom-0 transition-all duration-300 bg-slate-900/60 backdrop-blur flex justify-start  items-start gap-3 flex-col p-4`}

@@ -1,11 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import themeSlice from "./slices/themeSlice";
 import profileSlice from "./slices/profileSlice";
+import searchSlice from "./slices/searchSlice";
+import changeLayoutSlice from "./slices/changeLayout";
 
 const store = configureStore({
 	reducer: {
 		theme: themeSlice,
-		profile:profileSlice
+		profile:profileSlice,
+		showSearch:searchSlice,
+		layout:changeLayoutSlice
 	},
 });
 

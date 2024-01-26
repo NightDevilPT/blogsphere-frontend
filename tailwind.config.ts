@@ -14,6 +14,7 @@ const config: Config = {
 			roboto: ["Roboto", "sans-serif"],
 			ubuntu: ["Ubuntu", "sans-serif"],
 			lobster: ["Lobster", "sans-serif"],
+			mont: ["Montserrat", "sans-serif"],
 		},
 		extend: {
 			backgroundImage: {

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 
 import ReduxProvide from "@/layouts/ReduxProvide";
 import FirstCallFunction from "@/layouts/FirstCallFunction";
-import HeaderFrame from "@/components/Header";
+import HeaderFrame from "@/components/HeaderFrame";
+import SearchPopupFrame from "@/components/SearchPopup";
+import FooteFrame from "@/components/FooterFrame";
 
 export const metadata: Metadata = {
 	title: "BlogSphere",
@@ -21,13 +23,14 @@ export default function RootLayout({
 	return (
 		<html lang="en" data-theme="dark">
 			<body
-				className={`w-full h-[100vh] overflow-hidden flex justify-center items-center flex-col`}
+				className={`w-full h-full overflow-y-auto`}
 			>
 				<ReduxProvide>
 					<FirstCallFunction>
 						<HeaderFrame />
 						{children}
-						
+						<FooteFrame />
+						<SearchPopupFrame />
 					</FirstCallFunction>
 				</ReduxProvide>
 				<ToastContainer autoClose={2000} />

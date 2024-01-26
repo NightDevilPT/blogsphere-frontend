@@ -23,3 +23,13 @@ export enum HttpMethod {
 	PUT = 'PUT',
 	DELETE = 'DELETE',
 }
+
+export interface blogType{
+	title:string;
+	url:string;
+	description:string;
+	comments:number;
+	likes:number;
+	createdAt:number;
+	context:string;
+}

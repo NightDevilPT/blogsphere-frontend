@@ -9,36 +9,36 @@ import UserNavFrame from "./UserNav";
 import { CgMenuLeft } from "react-icons/cg";
 
 const HeaderFrame = () => {
-	const [scrolling, setScrolling] = useState<boolean>(window.scrollY > 100);
+	const [scrolling, setScrolling] = useState<boolean>(false);
 	const [showNav, setShowNav] = useState<boolean>(false);
 	const headerRef = useRef<HTMLDivElement | null>(null);
 
-	useEffect(() => {
-		const handleScroll = () => {
-			const scrollTop = window.scrollY;
-			const threshold = 100;
-			setScrolling(scrollTop > threshold);
-		};
+	// useEffect(() => {
+	// 	const handleScroll = () => {
+	// 		const scrollTop = window.scrollY;
+	// 		const threshold = 100;
+	// 		setScrolling(scrollTop > threshold);
+	// 	};
 
-		const handleClickOutside = (event: any) => {
-			if (
-				headerRef.current &&
-				!headerRef.current.contains(event.target)
-			) {
-				setShowNav(false);
-			}
-		};
+	// 	const handleClickOutside = (event: any) => {
+	// 		if (
+	// 			headerRef.current &&
+	// 			!headerRef.current.contains(event.target)
+	// 		) {
+	// 			setShowNav(false);
+	// 		}
+	// 	};
 
-		window.addEventListener("scroll", handleScroll);
-		window.addEventListener("load", handleScroll);
-		document.addEventListener("click", handleClickOutside);
+	// 	window.addEventListener("scroll", handleScroll);
+	// 	window.addEventListener("load", handleScroll);
+	// 	document.addEventListener("click", handleClickOutside);
 
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-			window.removeEventListener("load", handleScroll);
-			document.removeEventListener("click", handleClickOutside);
-		};
-	}, []);
+	// 	return () => {
+	// 		window.removeEventListener("scroll", handleScroll);
+	// 		window.removeEventListener("load", handleScroll);
+	// 		document.removeEventListener("click", handleClickOutside);
+	// 	};
+	// }, []);
 
 	return (
 		<header

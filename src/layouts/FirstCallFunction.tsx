@@ -11,12 +11,7 @@ const FirstCallFunction = ({ children }: ChildProps) => {
 	const dispatch = useAppDispatch();
 	const { theme } = useAppSelector((state: RootState) => state.theme);
 
-	const fetchProfile = async () => {
-		dispatch(fetchProfileData());
-	};
-
 	useEffect(() => {
-		fetchProfile();
 		changeTheme(theme);
 	}, []);
 	return <>{children}</>;

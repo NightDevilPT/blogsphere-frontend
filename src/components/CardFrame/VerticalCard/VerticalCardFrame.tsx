@@ -14,16 +14,20 @@ const VerticalCardFrame = ({ blogs }: IProps) => {
 			className={`min-w-[320px] h-auto flex justify-start items-start flex-col bg-secondary-bg rounded overflow-hidden`}
 		>
 			<div className={`w-full h-40 rounded`}>
-				<img src={blogs.url} className={`w-full h-full object-cover`} alt="blogs-images" />
+				<img
+					src={blogs.url}
+					className={`w-full h-full object-cover`}
+					alt="blogs-images"
+				/>
 			</div>
 			<div
 				className={`w-full h-auto p-4 flex justify-start items-start flex-col gap-2`}
 			>
-				<h1
-					className={`w-full h-8 rounded text-primary-fg text-xl truncate font-bold`}
+				<div
+					className={`w-full h-auto text-primary-fg text-xl truncate font-bold `}
 				>
 					{blogs.title}
-				</h1>
+				</div>
 				<div
 					className={`w-[90%] h-12 overflow-hidden rounded text-primary-fg`}
 				>

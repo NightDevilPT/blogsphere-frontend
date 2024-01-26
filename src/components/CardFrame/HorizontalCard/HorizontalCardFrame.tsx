@@ -21,9 +21,10 @@ const HorizontalCardFrame = ({ blogs }: IProps) => {
 				className={`w-full h-48 absolute left-0 -bottom-[170px] group-hover:bottom-0 transition-all duration-300 bg-slate-900/60 backdrop-blur flex justify-start  items-start gap-3 flex-col p-4`}
 			>
 				<div
-					className={`w-full h-8 rounded text-primary-fg text-xl truncate font-bold `}
+					className={`w-full h-auto text-primary-fg text-xl truncate font-bold `}
 				>
 					{blogs.title}
+					<div className={`w-[50%] h-[10px] bg-red-500 mt-2px`}></div>
 				</div>
 				<div
 					className={`w-[90%] h-16 overflow-hidden rounded text-primary-fg`}

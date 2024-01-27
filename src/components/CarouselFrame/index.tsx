@@ -115,14 +115,14 @@ const CarouselFrame = ({ changeLayout, title }: IProps) => {
 					</h3>
 					{changeLayout && (
 						<button
-							className={`w-auto h-auto relative p-2 px-3 flex justify-between items-center gap-5 rounded bg-secondary-bg`}
+							className={`w-auto h-auto relative grid grid-cols-2 gap-2 p-2 justify-center items-center rounded bg-secondary-bg`}
 							onClick={(event: any) => {
 								setLayout(!layout);
 							}}
 						>
 							<div
-								className={`w-8 h-7 bg-highlight absolute rounded ${
-									layout ? "left-[7px]" : "left-[58px]"
+								className={`w-7 h-7 bg-highlight absolute rounded ${
+									layout ? "left-[5px]" : "left-[50%]"
 								} transition-all duration-300`}
 							></div>
 							<BsGrid1X2Fill

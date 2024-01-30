@@ -16,6 +16,7 @@ const FirstCallFunction = ({ children }: ChildProps) => {
 
 	const fetchUser=async ()=>{
 		await dispatch(fetchProfileData())
+		console.log(profile.loading);
 		setLoading(profile.loading)
 	}
 
@@ -23,7 +24,7 @@ const FirstCallFunction = ({ children }: ChildProps) => {
 		changeTheme(theme);
 		fetchUser()
 	}, []);
-	
+
 	return loading ? <PageLoading /> : <>{children}</>;
 };
 

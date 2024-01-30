@@ -1,6 +1,5 @@
 'use client'
 
-import type { Metadata } from "next";
 import { ToastContainer } from "react-toastify";
 
 import "./globals.css";
@@ -11,10 +10,7 @@ import FirstCallFunction from "@/layouts/FirstCallFunction";
 import HeaderFrame from "@/components/HeaderFrame";
 import SearchPopupFrame from "@/components/SearchPopup";
 import FooteFrame from "@/components/FooterFrame";
-import SessionProviderWrapper from "@/HOC/SessionProviderWrapper";
 import { SessionProvider } from "next-auth/react";
-import PageLoader from "next/dist/client/page-loader";
-import PageLoading from "@/components/PageLoading";
 
 // export const metadata: Metadata = {
 // 	title: "BlogSphere",

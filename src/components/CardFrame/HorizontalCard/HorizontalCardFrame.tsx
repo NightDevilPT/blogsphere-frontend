@@ -12,43 +12,45 @@ interface IProps {
 const HorizontalCardFrame = ({ blogs }: IProps) => {
 	return (
 		<div
-			className={`relative group min-w-[320px] h-auto grid-cols-2 gap-3 bg-secondary-bg rounded overflow-hidden cursor-pointer`}
+			className={`relative group min-w-[320px] h-44 flex justify-start items-start gap-1 bg-secondary-bg rounded overflow-hidden cursor-pointer`}
 		>
-			<div className={`w-full h-48 rounded bg-border`}>
+			<div className={` w-28 min-w-[120px] h-full bg-border`}>
 				<img src={blogs.url} className={`w-full h-full object-cover`} alt="blogs-image" />
 			</div>
+
 			<div
-				className={`w-full h-48 absolute left-0 -bottom-[170px] group-hover:bottom-0 transition-all duration-300 bg-slate-900/60 backdrop-blur flex justify-start  items-start gap-3 flex-col p-4`}
+				className={`w-full h-full flex justify-start items-start gap-1 flex-col p-2`}
 			>
 				<div
-					className={`w-full h-auto text-primary-fg text-xl truncate font-bold `}
+					className={`w-full h-8 text-primary-fg text-xl line-clamp-1 font-bold `}
 				>
 					{blogs.title}
-					<div className={`w-[50%] h-[10px] bg-red-500 mt-2px`}></div>
+					<div className={`w-[50%] h-[4px] bg-red-500 mt-2px`}></div>
 				</div>
 				<div
-					className={`w-[90%] h-16 overflow-hidden rounded text-primary-fg`}
+					className={`w-[90%] h-auto overflow-hidden rounded text-primary-fg`}
 				>
 					<div className="line-clamp-3 text-sm">
 						{blogs.description}
 					</div>
 				</div>
 				<div
-					className={`w-full h-auto flex justify-end items-end gap-1`}
+					className={`w-full h-auto mt-2 flex justify-end items-end gap-1`}
 				>
 					<span className={`text-xs text-primary-fg`}>
 						{new Date(blogs.createdAt).toLocaleString()}
 					</span>
 				</div>
+
 				<div
-					className={`w-full h-auto flex justify-start items-center gap-5`}
+					className={`w-full h-auto flex justify-end items-center gap-5 mt-3`}
 				>
 					<div
 						className={`w-auto h-5 rounded flex justify-center items-center gap-1`}
 					>
 						<AiFillLike className={`w-5 h-5 text-red-500`} />
 						<span
-							className={`h-full flex justify-center items-center text-primary-fg font-bold`}
+							className={`h-full flex justify-center items-center text-sm text-primary-fg font-bold`}
 						>
 							{formatNumber(blogs.likes)}
 						</span>
@@ -60,7 +62,7 @@ const HorizontalCardFrame = ({ blogs }: IProps) => {
 							className={`w-5 h-5 relative top-[2px] text-highlight`}
 						/>
 						<span
-							className={`h-full flex justify-center items-center text-primary-fg font-bold`}
+							className={`h-full flex justify-center items-center text-sm text-primary-fg font-bold`}
 						>
 							{formatNumber(blogs.comments)}
 						</span>

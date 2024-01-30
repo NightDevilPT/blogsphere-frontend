@@ -13,7 +13,7 @@ interface IProps {
 }
 
 const CarouselFrame = ({ changeLayout, title }: IProps) => {
-	const [layout, setLayout] = useState<boolean>(false);
+	const [layout, setLayout] = useState<boolean>(true);
 	const [loading,setLoading]=useState<boolean>(false);
 	const blogs: blogType[] = [
 		{

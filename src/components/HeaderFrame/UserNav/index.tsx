@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, {
 	Dispatch,
@@ -19,12 +19,18 @@ import { RiSettingsLine } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { setShowSearch } from "@/redux/slices/searchSlice";
+import Link from "next/link";
+import { useAppSelector } from "@/redux/hooks";
+import { RootState } from "@/redux/store";
 
 interface IProps {
 	setShowNav: Dispatch<SetStateAction<boolean>>;
 }
 
-const useOutsideClick = (ref: React.MutableRefObject<HTMLDivElement | null>, callback: any) => {
+const useOutsideClick = (
+	ref: React.MutableRefObject<HTMLDivElement | null>,
+	callback: any
+) => {
 	useEffect(() => {
 		const handleClickOutside = (event: any) => {
 			if (ref.current && !ref.current.contains(event.target)) {
@@ -41,8 +47,9 @@ const useOutsideClick = (ref: React.MutableRefObject<HTMLDivElement | null>, cal
 };
 
 const UserNavFrame = ({ setShowNav }: IProps) => {
+	const {data} = useAppSelector((state:RootState)=>state.profile);
 	const [hide, setHide] = useState<boolean>(false);
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 	const userNavRef = useRef<HTMLDivElement | null>(null);
 
 	useOutsideClick(userNavRef, () => setHide(false));
@@ -53,7 +60,7 @@ const UserNavFrame = ({ setShowNav }: IProps) => {
 		>
 			<button
 				className={`px-2 py-1 h-7 max-[400px]:w-9 rounded bg-border text-secondary-fg flex justify-center items-center font-bold text-sm gap-2`}
-				onClick={()=>dispatch(setShowSearch(true))}
+				onClick={() => dispatch(setShowSearch(true))}
 			>
 				<span className={`max-[400px]:hidden`}>Search</span>
 				<FiSearch className={`flex-1`} />
@@ -71,7 +78,7 @@ const UserNavFrame = ({ setShowNav }: IProps) => {
 				}`}
 				ref={userNavRef}
 			>
-				<UserNavPopupFrame />
+				{data?<UserNavPopupFrame />:<SignupLoginFrame />}
 			</div>
 		</div>
 	);
@@ -145,6 +152,25 @@ const UserNavPopupFrame = () => {
 				<HiOutlineLogout className={`w-5 h-5`} />
 				Logout
 			</button>
+		</div>
+	);
+};
+
+const SignupLoginFrame = () => {
+	return (
+		<div className="w-full h-auto flex justify-between items-center gap-3">
+			<Link
+				className={`w-full h-auto py-1 font-bold text-sm rounded flex justify-center items-center gap-2 bg-primary-fg text-primary-bg`}
+				href={'/'}
+			>
+				Signup
+			</Link>
+			<Link
+				className={`w-full h-auto py-1 font-bold text-sm rounded flex justify-center items-center gap-2 border-[1px] border-primary-fg text-primary-fg hover:bg-primary-fg hover:text-primary-bg transition-all duration-300`}
+				href={'/'}
+			>
+				Login
+			</Link>
 		</div>
 	);
 };

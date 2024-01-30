@@ -1,15 +1,17 @@
-// "use client";
+"use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import BannerFrame from "@/components/BannerFrame";
 import CarouselFrame from "@/components/CarouselFrame";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
-	// const { theme } = useSelector((state: RootState) => state.theme);
-	// useEffect(() => {
-	// 	changeTheme(theme);
-	// }, []);
+	const {data:session} = useSession()
+
+	useEffect(()=>{
+		console.log(session)
+	},[session])
 
 	return (
 		<div className={`w-full bg-primary-bg`}>

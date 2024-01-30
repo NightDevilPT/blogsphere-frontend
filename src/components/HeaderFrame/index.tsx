@@ -9,42 +9,12 @@ import UserNavFrame from "./UserNav";
 import { CgMenuLeft } from "react-icons/cg";
 
 const HeaderFrame = () => {
-	const [scrolling, setScrolling] = useState<boolean>(false);
 	const [showNav, setShowNav] = useState<boolean>(false);
 	const headerRef = useRef<HTMLDivElement | null>(null);
 
-	// useEffect(() => {
-	// 	const handleScroll = () => {
-	// 		const scrollTop = window.scrollY;
-	// 		const threshold = 100;
-	// 		setScrolling(scrollTop > threshold);
-	// 	};
-
-	// 	const handleClickOutside = (event: any) => {
-	// 		if (
-	// 			headerRef.current &&
-	// 			!headerRef.current.contains(event.target)
-	// 		) {
-	// 			setShowNav(false);
-	// 		}
-	// 	};
-
-	// 	window.addEventListener("scroll", handleScroll);
-	// 	window.addEventListener("load", handleScroll);
-	// 	document.addEventListener("click", handleClickOutside);
-
-	// 	return () => {
-	// 		window.removeEventListener("scroll", handleScroll);
-	// 		window.removeEventListener("load", handleScroll);
-	// 		document.removeEventListener("click", handleClickOutside);
-	// 	};
-	// }, []);
-
 	return (
 		<header
-			className={`left-0 top-0 w-full h-20 z-50 transition-all duration-300 bg-slate-950/90 ${
-				scrolling ? "bg-slate-950/90 backdrop-blur fixed" : "absolute"
-			} font-mont`}
+			className={`fixed left-0 top-0 w-full h-20 z-50 transition-all duration-300 bg-slate-950/90 font-mont backdrop-blur`}
 			ref={headerRef}
 		>
 			<div

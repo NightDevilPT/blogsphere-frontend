@@ -12,16 +12,18 @@ const FirstCallFunction = ({ children }: ChildProps) => {
 	const dispatch = useAppDispatch();
 	const { theme } = useAppSelector((state: RootState) => state.theme);
 	const [loading, setLoading] = useState<boolean>(true);
+	const profile = useAppSelector((state:RootState)=>state.profile);
 
 	const fetchUser=async ()=>{
 		await dispatch(fetchProfileData())
-		setLoading(false)
+		setLoading(profile.loading)
 	}
 
 	useEffect(() => {
 		changeTheme(theme);
 		fetchUser()
 	}, []);
+	
 	return loading ? <PageLoading /> : <>{children}</>;
 };
 

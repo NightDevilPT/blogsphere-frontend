@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { BsGridFill } from "react-icons/bs";
-import { BsGrid1X2Fill } from "react-icons/bs";
+import { TfiLayoutListThumbAlt } from "react-icons/tfi";
 import { blogType } from "@/types/types";
 import LoadingFrame from "../LoadingFrame";
 import BlogFrame from "../BlogFrame";
@@ -125,7 +125,7 @@ const CarouselFrame = ({ changeLayout, title }: IProps) => {
 									layout ? "left-[5px]" : "left-[50%]"
 								} transition-all duration-300`}
 							></div>
-							<BsGrid1X2Fill
+							<TfiLayoutListThumbAlt
 								className={`w-5 h-5 relative z-10 transition-all delay-200 duration-200 ${
 									layout
 										? "text-secondary-bg"

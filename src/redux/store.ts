@@ -3,13 +3,15 @@ import themeSlice from "./slices/themeSlice";
 import profileSlice from "./slices/profileSlice";
 import searchSlice from "./slices/searchSlice";
 import changeLayoutSlice from "./slices/changeLayout";
+import signupSlice from "./slices/signupSlice";
 
 const store = configureStore({
 	reducer: {
 		theme: themeSlice,
 		profile:profileSlice,
 		showSearch:searchSlice,
-		layout:changeLayoutSlice
+		layout:changeLayoutSlice,
+		signup:signupSlice
 	},
 });
 

@@ -9,8 +9,10 @@ export interface LoginType {
 
 export interface SignupType{
 	email:string,
-	password:string,
-	username:string
+	password?:string,
+	username:string,
+	provider?:string,
+	image?:string
 }
 
 export interface ForgetType {

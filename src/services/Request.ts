@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 type DataType = SignupType | LoginType | ForgetType;
 const status: number[] = [200, 201];
 const error: number[] = [403, 401, 404, 500];
-type methods = "POST"|"PUT"|"GET"|"DELETE"
+type methods = "POST" | "PUT" | "GET" | "DELETE";
 
 const apiService: AxiosInstance = axios.create({
 	baseURL: env.BACKEND_URL,
@@ -15,34 +15,20 @@ const apiService: AxiosInstance = axios.create({
 	},
 });
 
-export const Request = async (url: string,method:methods, data?: DataType) => {
+export const Request = async (
+	url: string,
+	method: methods,
+	data?: DataType
+) => {
 	try {
 		const response = await apiService({
-      method,
-      data,
-      url
-    });
-		if (response.status === 200 || response.status === 201) {
-			toast.success(response.data.message, {
-				theme: "colored",
-			});
-			return { status: true, data: response.data.message };
-		}
+			method,
+			data,
+			url,
+		});
+		return response
 	} catch (err: any) {
-		if (err.response.status === 403) {
-			toast.info(err.response.data.message, {
-				theme: "colored",
-			});
-		}else if (err.response.status === 404) {
-      toast.info("User not exist with this mail", {
-        theme: "colored",
-      });
-    } else {
-			toast.error(err.response.data.message, {
-				theme: "colored",
-			});
-		}
-		return { status: false, data: null };
+		return err
 	}
 };
 

@@ -161,13 +161,13 @@ const SignupLoginFrame = () => {
 		<div className="w-full h-auto flex justify-between items-center gap-3">
 			<Link
 				className={`w-full h-auto py-1 font-bold text-sm rounded flex justify-center items-center gap-2 bg-primary-fg text-primary-bg`}
-				href={'/'}
+				href={'/auth/signup'}
 			>
 				Signup
 			</Link>
 			<Link
 				className={`w-full h-auto py-1 font-bold text-sm rounded flex justify-center items-center gap-2 border-[1px] border-primary-fg text-primary-fg hover:bg-primary-fg hover:text-primary-bg transition-all duration-300`}
-				href={'/'}
+				href={'/auth/login'}
 			>
 				Login
 			</Link>

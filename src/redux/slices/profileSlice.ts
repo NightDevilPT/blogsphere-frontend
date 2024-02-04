@@ -21,7 +21,7 @@ const fetchProfileData = createAsyncThunk(
 	"profileSlice",
 	async (_, { rejectWithValue }) => {
 		try {
-			const tokenData = window.localStorage.getItem("authToken");
+			const tokenData = window.localStorage.getItem("token");
 			if (!tokenData) return null;
 			const data = await apiService.get(`/user/get-profile`, {
 				headers: {

@@ -4,22 +4,17 @@ import { SignupType } from "@/types/types";
 
 import Link from "next/link";
 import { signIn } from "next-auth/react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaGithub } from "react-icons/fa6";
 
-import { RootState } from "@/redux/store";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
-import { signupUserThunk } from "@/redux/slices/signupSlice";
-import ShowNotification from "@/components/ShowNotification";
 import InputComponent from "@/components/FormComponent/InputComponent";
 import { Request } from "@/services/Request";
 
 const index = () => {
 	const [loading,setLoading]=useState<boolean>(false);
-	const dispatch = useAppDispatch();
-	const router = useRouter();
 	const registerNewUser = async (formData: SignupType) => {
 		setLoading(true)
 		const res = await Request(`/user/create`, "POST", formData);

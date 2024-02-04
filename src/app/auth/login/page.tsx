@@ -18,19 +18,19 @@ const index = () => {
 		email: string;
 		password: string;
 	}) => {
-		setLoading(true)
+		setLoading(true);
 		const res = await Request(`/user/login`, "POST", formData);
 
-		if(!res.name){
-			window.localStorage.setItem('token',res.data.jwt)
-			window.localStorage.setItem('id',res.data.id)
-			ShowNotification(res.data.message)
-			router.push('/')
-		}else{
-			ShowNotification(res.response.data.message)
+		if (!res.name) {
+			window.localStorage.setItem("token", res.data.jwt);
+			window.localStorage.setItem("id", res.data.id);
+			ShowNotification(res.data.message);
+			router.push("/");
+		} else {
+			ShowNotification(res.response.data.message);
 		}
-		setLoading(false)
-		console.log(res)
+		setLoading(false);
+		console.log(res);
 	};
 
 	return (
@@ -65,16 +65,14 @@ const index = () => {
 						required={true}
 						type="password"
 					/>
-
 					<div
 						className={`w-full h-auto flex justify-end items-end gap-2 text-xs`}
 					>
-						Create a new Account?{" "}
 						<Link
-							href={"/auth/signup"}
+							href={"/auth/resend/forget-password"}
 							className="text-highlight font-bold"
 						>
-							Signup
+							Forget Password
 						</Link>
 					</div>
 
@@ -92,6 +90,17 @@ const index = () => {
 					</button>
 				</form>
 				<div
+					className={`w-full h-auto flex justify-center items-center gap-2 text-xs mt-1 text-primary-fg`}
+				>
+					Create a new Account?{" "}
+					<Link
+						href={"/auth/signup"}
+						className="text-highlight font-bold"
+					>
+						Signup
+					</Link>
+				</div>
+				<div
 					className={`w-[80%] flex justify-center items-center gap-1 my-4`}
 				>
 					<span className={`flex-1 h-[2px] bg-border`}></span>
@@ -106,7 +115,9 @@ const index = () => {
 					<button
 						className={`w-full h-auto py-2 rounded flex justify-center items-center gap-2 bg-primary-fg text-primary-bg`}
 						onClick={() => {
-							signIn("github", { callbackUrl: "/auth/provider/github" });
+							signIn("github", {
+								callbackUrl: "/auth/provider/github",
+							});
 						}}
 					>
 						<FaGithub className={`w-5 h-5`} />

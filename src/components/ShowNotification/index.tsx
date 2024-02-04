@@ -1,8 +1,10 @@
-import React from 'react'
+
 import { toast } from 'react-toastify'
 
 const ShowNotification = (data:any) => {
-	if(data.statusCode===410){
+	const codes = [410,404]
+	codes.indexOf(data.statusCode)
+	if(codes.indexOf(data.statusCode)){
 		console.log('notified')
 		toast.warning(data.message);
 	}else{

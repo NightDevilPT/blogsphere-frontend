@@ -19,6 +19,10 @@ export interface ForgetType {
 	email:string
 }
 
+export interface UpdatePassword {
+	password:string
+}
+
 export enum HttpMethod {
 	GET = 'GET',
 	POST = 'POST',

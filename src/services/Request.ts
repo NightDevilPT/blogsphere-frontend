@@ -1,9 +1,9 @@
 import { env } from "@/config/env";
-import { ForgetType, LoginType, SignupType } from "@/types/types";
+import { ForgetType, LoginType, SignupType, UpdatePassword } from "@/types/types";
 import axios, { AxiosError, AxiosInstance } from "axios";
 import { toast } from "react-toastify";
 
-type DataType = SignupType | LoginType | ForgetType;
+type DataType = SignupType | LoginType | ForgetType | UpdatePassword;
 const status: number[] = [200, 201];
 const error: number[] = [403, 401, 404, 500];
 type methods = "POST" | "PUT" | "GET" | "DELETE";

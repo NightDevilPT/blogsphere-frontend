@@ -4,7 +4,7 @@ import { SignupType } from "@/types/types";
 
 import Link from "next/link";
 import { signIn } from "next-auth/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaGithub } from "react-icons/fa6";
 
@@ -14,25 +14,18 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { signupUserThunk } from "@/redux/slices/signupSlice";
 import ShowNotification from "@/components/ShowNotification";
 import InputComponent from "@/components/FormComponent/InputComponent";
+import { Request } from "@/services/Request";
 
 const index = () => {
-	const { data, loading, error } = useAppSelector(
-		(state: RootState) => state.signup
-	);
+	const [loading,setLoading]=useState<boolean>(false);
 	const dispatch = useAppDispatch();
 	const router = useRouter();
 	const registerNewUser = async (formData: SignupType) => {
-		await dispatch(signupUserThunk(formData));
+		setLoading(true)
+		const res = await Request(`/user/create`, "POST", formData);
+		setLoading(false)
+		console.log(res)
 	};
-
-	useEffect(() => {
-		if (data || error) {
-			ShowNotification(data ? data : error);
-		}
-		if(data){
-			router.push('/auth/login')
-		}
-	}, [data, error]);
 
 	return (
 		<div
@@ -114,7 +107,7 @@ const index = () => {
 					<button
 						className={`w-full h-auto py-2 rounded flex justify-center items-center gap-2 bg-primary-fg text-primary-bg`}
 						onClick={() => {
-							signIn("github", { callbackUrl: "/auth/github" });
+							signIn("github", { callbackUrl: "/auth/provider/github" });
 						}}
 					>
 						<FaGithub className={`w-5 h-5`} />

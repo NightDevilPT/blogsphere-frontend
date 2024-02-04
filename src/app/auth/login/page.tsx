@@ -7,13 +7,31 @@ import InputComponent from "@/components/FormComponent/InputComponent";
 import { FaGithub } from "react-icons/fa6";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { Request } from "@/services/Request";
+import ShowNotification from "@/components/ShowNotification";
+import { useRouter } from "next/navigation";
 
 const index = () => {
-	const [formState, setFormState] = useState<SignupType>({
-		username: "",
-		email: "",
-		password: "",
-	});
+	const [loading, setLoading] = useState<boolean>(false);
+	const router = useRouter();
+	const loginFunction = async (formData: {
+		email: string;
+		password: string;
+	}) => {
+		setLoading(true)
+		const res = await Request(`/user/login`, "POST", formData);
+
+		if(!res.name){
+			window.localStorage.setItem('token',res.data.jwt)
+			window.localStorage.setItem('id',res.data.id)
+			ShowNotification(res.data.message)
+			router.push('/')
+		}else{
+			ShowNotification(res.response.data.message)
+		}
+		setLoading(false)
+		console.log(res)
+	};
 
 	return (
 		<div
@@ -31,6 +49,10 @@ const index = () => {
 					className={`w-full h-auto flex justify-start items-start gap-4 text-slate-300 flex-col`}
 					onSubmit={(event: any) => {
 						event.preventDefault();
+						loginFunction({
+							email: event.target.email.value,
+							password: event.target.password.value,
+						});
 					}}
 				>
 					<InputComponent
@@ -48,16 +70,25 @@ const index = () => {
 						className={`w-full h-auto flex justify-end items-end gap-2 text-xs`}
 					>
 						Create a new Account?{" "}
-						<Link href={"/auth/signup"} className="text-highlight font-bold">
+						<Link
+							href={"/auth/signup"}
+							className="text-highlight font-bold"
+						>
 							Signup
 						</Link>
 					</div>
 
 					<button
 						type="submit"
-						className={`w-full h-10 bg-slate-200 text-slate-900 font-bold rounded`}
+						className={`w-full h-10 bg-slate-200 text-slate-900 font-bold rounded flex justify-center items-center gap-2`}
+						disabled={loading}
 					>
-						Login
+						Login{" "}
+						{loading && (
+							<span
+								className={`w-5 h-5 border-2 rounded-full border-slate-300 border-t-secondary-fg animate-spin`}
+							/>
+						)}
 					</button>
 				</form>
 				<div
@@ -75,7 +106,7 @@ const index = () => {
 					<button
 						className={`w-full h-auto py-2 rounded flex justify-center items-center gap-2 bg-primary-fg text-primary-bg`}
 						onClick={() => {
-							signIn("github", { callbackUrl: "/" });
+							signIn("github", { callbackUrl: "/auth/provider/github" });
 						}}
 					>
 						<FaGithub className={`w-5 h-5`} />

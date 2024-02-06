@@ -1,46 +1,37 @@
 "use client";
 
 import PageLoading from "@/components/PageLoading";
-import ShowNotification from "@/components/ShowNotification";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { fetchProfileData } from "@/redux/slices/profileSlice";
-import { signupUserThunk } from "@/redux/slices/signupSlice";
-import { RootState } from "@/redux/store";
+import { Request } from "@/services/Request";
 import { SignupType } from "@/types/types";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const page = ({ params }: { params: { redirectRoute: string } }) => {
 	const { data } = useSession();
-	const dispatch = useAppDispatch();
-	const router = useRouter();
-	const signIn = useAppSelector((state: RootState) => state.signup);
-	useEffect(() => {
-		if (data?.user) {
+	const [apiCalled,setApiCalled]=useState<boolean>(true);
+	const router = useRouter()
+
+	const addUser=async()=>{
+		if(data && apiCalled){
+			setApiCalled(false);
 			const formData = {
-				username: data.user?.name,
-				image: data.user?.image,
-				email: data.user?.email,
-				provider: params.redirectRoute,
-			};
-			if (formData) {
-				dispatch(signupUserThunk(formData as SignupType));
+				username:data.user?.name,
+				email:data.user?.email,
+				image:data.user?.image,
+				provider:'github'
+			}
+			const res = await Request(`/user/create`,'POST',formData as SignupType);
+			if(res.jwt){
+				console.log("done")
+				router.push('/')
 			}
 		}
-	}, [data]);
+	}
 
 	useEffect(() => {
-		if (signIn.data || signIn.error) {
-			// ShowNotification(signIn.data ? {message:"Signin Success"} : signIn.error);
-		}
-		if (signIn.data) {
-			window.localStorage.setItem('token',signIn.data.jwt)
-			window.localStorage.setItem('id',signIn.data.id)
-			dispatch(fetchProfileData())
-			router.push("/");
-		}
-	}, [signIn.data,signIn.error]);
+		addUser()
+	}, [data]);
 
 	return (
 		<div className="w-full h-full flex justify-center items-center gap-5 flex-col">

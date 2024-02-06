@@ -9,8 +9,8 @@ const authOption = NextAuth({
 			clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET || "",
 		}),
 		GithubProvider({
-            clientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID as string,
-            clientSecret: process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET as string,
+            clientId: process.env.GITHUB_CLIENT_ID as string,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
         }),
 	],
 });

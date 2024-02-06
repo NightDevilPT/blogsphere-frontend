@@ -3,7 +3,11 @@ import Image from "next/image";
 import React from "react";
 
 import bannerImage from "../../../assets/nature-3082832_1920.jpg"
-
+import type { Metadata } from 'next'
+export const metadata: Metadata = {
+  title: 'Update Password',
+  description: 'Blogsphere Update Password',
+}
 const index = ({ children }: ChildProps) => {
 	return (
 		<div className={`w-full h-full absolute left-0 top-0 z-50 overflow-hidden`}>

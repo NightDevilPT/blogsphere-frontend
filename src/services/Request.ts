@@ -1,3 +1,4 @@
+import ShowNotification from "@/components/ShowNotification";
 import { env } from "@/config/env";
 import { ForgetType, LoginType, SignupType, UpdatePassword } from "@/types/types";
 import axios, { AxiosError, AxiosInstance } from "axios";
@@ -26,9 +27,11 @@ export const Request = async (
 			data,
 			url,
 		});
-		return response
+		ShowNotification(response.data)
+		return response.data
 	} catch (err: any) {
-		return err
+		ShowNotification(err.response.data)
+		return err.response.data
 	}
 };
 

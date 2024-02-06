@@ -5,7 +5,6 @@ import React from "react";
 import bannerImage from "../../../assets/nature-3082832_1920.jpg"
 
 import type { Metadata } from 'next'
- 
 export const metadata: Metadata = {
   title: 'Login',
   description: 'Blogsphere Login',

@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 
 import BannerFrame from "@/components/BannerFrame";
 import CarouselFrame from "@/components/CarouselFrame";
-import { useSession } from "next-auth/react";
 
 export default function Home() {
 

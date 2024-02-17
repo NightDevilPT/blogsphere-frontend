@@ -23,6 +23,7 @@ const page = ({ params }: { params: { redirectRoute: string } }) => {
 			}
 			const res = await Request(`/user/create`,'POST',formData as SignupType);
 			if(res.jwt){
+				window.localStorage.setItem("token",res.jwt);
 				console.log("done")
 				router.push('/')
 			}

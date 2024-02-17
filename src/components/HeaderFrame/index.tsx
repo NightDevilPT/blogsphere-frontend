@@ -14,8 +14,7 @@ const HeaderFrame = () => {
 
 	return (
 		<header
-			className={`fixed left-0 top-0 w-full h-20 z-50 transition-all duration-300 bg-slate-950/90 font-mont backdrop-blur`}
-			ref={headerRef}
+			className={`fixed left-0 top-0 w-full h-20 z-40 transition-all duration-300 bg-slate-950/90 font-mont backdrop-blur`}
 		>
 			<div
 				className={`container max-sm:px-5 h-full flex justify-between items-center gap-5`}

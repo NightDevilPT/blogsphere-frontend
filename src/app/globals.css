@@ -60,10 +60,6 @@ html[data-theme="light"] {
 }
 
 /* Standard scrollbar styles */
-body {
-	scrollbar-width: thin;
-	scrollbar-color: var(--primary-fg) var(--secondary-bg);
-}
 
 body::-webkit-scrollbar {
 	width: 10px;

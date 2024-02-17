@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" data-theme="dark">
-			<body className={`w-full h-full overflow-y-auto`}>
+			<body className={`w-full h-full overflow-hidden overflow-y-auto`}>
 				<ReduxProvide>
 					<FirstCallFunction>{children}</FirstCallFunction>
 				</ReduxProvide>

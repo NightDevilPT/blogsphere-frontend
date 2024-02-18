@@ -2,6 +2,7 @@
 
 import FooteFrame from "@/components/FooterFrame";
 import HeaderFrame from "@/components/HeaderFrame";
+import PageLoading from "@/components/PageLoading";
 import SearchPopupFrame from "@/components/SearchPopup";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { fetchProfileData } from "@/redux/slices/profileSlice";
@@ -19,7 +20,7 @@ const FirstCallFunction = ({ children }: ChildProps) => {
 	const [loading, setLoading] = useState<boolean>(true);
 	const profile = useAppSelector((state: RootState) => state.profile);
 	const pathName = usePathname();
-	const excludedRoutes = ["/auth/login", "/auth/signup", "/auth/verify/"];
+	const excludedRoutes = ["/auth/login", "/auth/signup", "/auth/verify/","/create-profile"];
 
 	const fetchUser = async () => {
 		await dispatch(fetchProfileData());
@@ -30,6 +31,8 @@ const FirstCallFunction = ({ children }: ChildProps) => {
 		changeTheme(theme);
 		fetchUser();
 	}, []);
+
+
 
 	return (
 		<SessionProvider>
@@ -45,6 +48,7 @@ const FirstCallFunction = ({ children }: ChildProps) => {
 					<SearchPopupFrame />
 				</>
 			)}
+			{loading&&<PageLoading text="BlogSphere Loading..."/>}
 		</SessionProvider>
 	);
 };

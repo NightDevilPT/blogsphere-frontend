@@ -9,7 +9,6 @@ import React, {
 } from "react";
 
 import avatar from "../../../assets/avtar.png";
-import Image from "next/image";
 
 import { MdSpaceDashboard } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
@@ -22,6 +21,8 @@ import { setShowSearch } from "@/redux/slices/searchSlice";
 import Link from "next/link";
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
+import { logout } from "@/redux/slices/profileSlice";
+import { avtarConstants } from "@/constants/avtars";
 
 interface IProps {
 	setShowNav: Dispatch<SetStateAction<boolean>>;
@@ -47,12 +48,22 @@ const useOutsideClick = (
 };
 
 const UserNavFrame = ({ setShowNav }: IProps) => {
-	const {data} = useAppSelector((state:RootState)=>state.profile);
+	const { data } = useAppSelector((state: RootState) => state.profile);
+	const [image, setImage] = useState(
+		data && data.profile ? avtarConstants[data.profile.image] : avatar.src
+	);
 	const [hide, setHide] = useState<boolean>(false);
 	const dispatch = useDispatch();
 	const userNavRef = useRef<HTMLDivElement | null>(null);
 
 	useOutsideClick(userNavRef, () => setHide(false));
+	useEffect(() => {
+		setImage(
+			data && data.profile
+				? avtarConstants[data.profile.image]
+				: avatar.src
+		);
+	}, [data]);
 
 	return (
 		<div
@@ -66,10 +77,14 @@ const UserNavFrame = ({ setShowNav }: IProps) => {
 				<FiSearch className={`flex-1`} />
 			</button>
 			<button
-				className={`w-9 h-9 border-[1px] border-slate-700 hover:border-[2px] hover:border-sky-700 rounded-full p-[2px]`}
+				className={`w-9 h-9 border-[1px] overflow-hidden border-slate-700 hover:border-[2px] hover:border-sky-700 rounded-full p-[2px]`}
 				onClick={() => setHide(true)}
 			>
-				<Image src={avatar} alt="user-nav" />
+				<img
+					src={image !== "" ? image : avatar}
+					alt="user-nav"
+					className={`rounded-full`}
+				/>
 			</button>
 
 			<div
@@ -78,7 +93,11 @@ const UserNavFrame = ({ setShowNav }: IProps) => {
 				}`}
 				ref={userNavRef}
 			>
-				{data?<UserNavPopupFrame />:<SignupLoginFrame />}
+				{data ? (
+					<UserNavPopupFrame user={data} avtar={image} />
+				) : (
+					<SignupLoginFrame />
+				)}
 			</div>
 		</div>
 	);
@@ -86,21 +105,22 @@ const UserNavFrame = ({ setShowNav }: IProps) => {
 
 export default UserNavFrame;
 
-const UserNavPopupFrame = () => {
-	const user = {
-		username: "NightDevilPT",
-		uuid: "2525-4545-8585-6565",
+interface UserProps {
+	user: any;
+	avtar: string;
+}
+const UserNavPopupFrame = ({ user, avtar }: UserProps) => {
+	const dispatch = useDispatch();
+	const setLogout = () => {
+		dispatch(logout());
+		window.localStorage.removeItem("token");
 	};
 	return (
 		<div className={`w-full flex justify-start items-start flex-col gap-4`}>
-			<div className=" flex justify-start items-start gap-4">
-				<Image
-					src={avatar}
-					alt="user-nav"
-					className={`w-12 h-12 min-w-[48px] object-contain`}
-				/>
+			<div className="w-full grid grid-cols-4 items-center gap-4">
+				<img src={avtar} alt="user-nav" className={`rounded-full`} />
 				<div
-					className={`flex-1 flex justify-start items-start flex-col gap-1 text-primary-fg`}
+					className={` col-span-3 flex justify-start items-start flex-col gap-1 text-primary-fg line-clamp-1`}
 				>
 					<span
 						className={`w-full h-auto text-left font-bold text-base`}
@@ -110,10 +130,10 @@ const UserNavPopupFrame = () => {
 					<button
 						className={`w-[calc(100%-10px)] truncate h-auto text-left font-bold text-xs whitespace-nowrap text-highlight cursor-pointer`}
 						onClick={() => {
-							document.execCommand("copy", true, user.uuid);
+							document.execCommand("copy", true, user.id);
 						}}
 					>
-						{user.uuid ? user.uuid : "undefined"}
+						{user.id ? user.id : "undefined"}
 					</button>
 				</div>
 			</div>
@@ -133,12 +153,14 @@ const UserNavPopupFrame = () => {
 					<FaUserCircle className={`w-5 h-5`} />
 					My Profile
 				</button>
-				<button
-					className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-secondary-bg`}
-				>
-					<BiSolidEdit className={`w-5 h-5`} />
-					Edit Profile
-				</button>
+				<Link href={"/create-profile"} className="w-full">
+					<button
+						className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-secondary-bg`}
+					>
+						<BiSolidEdit className={`w-5 h-5`} />
+						Edit Profile
+					</button>
+				</Link>
 				<button
 					className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-secondary-bg`}
 				>
@@ -148,6 +170,7 @@ const UserNavPopupFrame = () => {
 			</div>
 			<button
 				className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-red-600`}
+				onClick={setLogout}
 			>
 				<HiOutlineLogout className={`w-5 h-5`} />
 				Logout
@@ -161,13 +184,13 @@ const SignupLoginFrame = () => {
 		<div className="w-full h-auto flex justify-between items-center gap-3">
 			<Link
 				className={`w-full h-auto py-1 font-bold text-sm rounded flex justify-center items-center gap-2 bg-primary-fg text-primary-bg`}
-				href={'/auth/signup'}
+				href={"/auth/signup"}
 			>
 				Signup
 			</Link>
 			<Link
 				className={`w-full h-auto py-1 font-bold text-sm rounded flex justify-center items-center gap-2 border-[1px] border-primary-fg text-primary-fg hover:bg-primary-fg hover:text-primary-bg transition-all duration-300`}
-				href={'/auth/login'}
+				href={"/auth/login"}
 			>
 				Login
 			</Link>

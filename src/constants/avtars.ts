@@ -1,5 +1,5 @@
 export const avtarConstants: any = {
-	'Working Man':
+	"Working Man":
 		"https://firebasestorage.googleapis.com/v0/b/blogsphere-9f74d.appspot.com/o/avtar%2Fprofile1.jpg?alt=media&token=202eb22a-3f80-4f80-a537-a1c1d7cb2bc9&_gl=1*1pzoir9*_ga*NTE4MTUzNDAwLjE2OTQzMTk2NjU.*_ga_CW55HF8NVT*MTY5OTE2NTg4Mi4xNi4xLjE2OTkxNjU5MTcuMjUuMC4w",
 	"Rocking Boy":
 		"https://firebasestorage.googleapis.com/v0/b/blogsphere-9f74d.appspot.com/o/avtar%2Fprofile2.jpg?alt=media&token=d5067f78-85bb-48a8-b787-85a6db92c3e8&_gl=1*2sb96b*_ga*NTE4MTUzNDAwLjE2OTQzMTk2NjU.*_ga_CW55HF8NVT*MTY5OTE2NTg4Mi4xNi4xLjE2OTkxNjU5OTAuNjAuMC4w",

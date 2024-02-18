@@ -23,14 +23,14 @@ const fetchProfileData = createAsyncThunk(
 		try {
 			const tokenData = window.localStorage.getItem("token");
 			if (!tokenData) return null;
-			const data = await apiService.get(`/user/get-profile`, {
+			const data = await apiService.get(`/user/get-user`, {
 				headers: {
 					Authorization: `Bearer ${window.localStorage.getItem(
-						"authToken"
+						"token"
 					)}`,
 				},
 			});
-			return data.data.data;
+			return data.data;
 		} catch (error) {
 			return rejectWithValue("Error fetching data");
 		}
@@ -41,7 +41,11 @@ const fetchProfileData = createAsyncThunk(
 const profileSlice = createSlice({
 	name: "profileSlice",
 	initialState,
-	reducers: {},
+	reducers: {
+		logout: (state: DataState) => {
+			state.data = null;
+		},
+	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchProfileData.pending, (state) => {
 			state.loading = true;
@@ -66,6 +70,7 @@ const profileSlice = createSlice({
 
 // Export the async thunk function for use in components or other slices
 export { fetchProfileData };
+export const {logout} = profileSlice.actions
 
 // Export the reducer to be used in the Redux store
 export default profileSlice.reducer;

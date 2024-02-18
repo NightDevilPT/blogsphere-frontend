@@ -15,11 +15,12 @@ import { Request } from "@/services/Request";
 
 const index = () => {
 	const [loading,setLoading]=useState<boolean>(false);
+	const router = useRouter();
 	const registerNewUser = async (formData: SignupType) => {
 		setLoading(true)
 		const res = await Request(`/user/create`, "POST", formData);
 		setLoading(false)
-		console.log(res)
+		router.push('/auth/login')
 	};
 
 	return (

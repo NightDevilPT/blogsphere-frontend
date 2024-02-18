@@ -10,27 +10,30 @@ import { signIn } from "next-auth/react";
 import { Request } from "@/services/Request";
 import ShowNotification from "@/components/ShowNotification";
 import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/redux/hooks";
+import { fetchProfileData } from "@/redux/slices/profileSlice";
 
 const index = () => {
 	const [loading, setLoading] = useState<boolean>(false);
 	const router = useRouter();
+	const dispatch = useAppDispatch()
 	const loginFunction = async (formData: {
 		email: string;
 		password: string;
 	}) => {
 		setLoading(true);
 		const res = await Request(`/user/login`, "POST", formData);
-
-		if (!res.name) {
-			window.localStorage.setItem("token", res.data.jwt);
-			window.localStorage.setItem("id", res.data.id);
-			ShowNotification(res.data.message);
-			router.push("/");
-		} else {
-			ShowNotification(res.response.data.message);
-		}
 		setLoading(false);
-		console.log(res);
+		if (!res.statusCode) {
+			window.localStorage.setItem("token", res.jwt);
+			window.localStorage.setItem("id", res.id);
+			ShowNotification(res.message);
+			dispatch(fetchProfileData())
+			router.push("/");
+
+		} else {
+			ShowNotification(res.message);
+		}
 	};
 
 	return (

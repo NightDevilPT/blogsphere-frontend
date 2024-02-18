@@ -1,41 +1,53 @@
 export type ChildProps = {
-	children:React.ReactNode
-}
+	children: React.ReactNode;
+};
 
 export interface LoginType {
-	email:string,
-	password:string
+	email: string;
+	password: string;
 }
 
-export interface SignupType{
-	email:string,
-	password?:string,
-	username:string,
-	provider?:string,
-	image?:string
+export interface SignupType {
+	email: string;
+	password?: string;
+	username: string;
+	provider?: string;
+	image?: string;
 }
 
 export interface ForgetType {
-	email:string
+	email: string;
 }
 
 export interface UpdatePassword {
-	password:string
+	password: string;
 }
 
 export enum HttpMethod {
-	GET = 'GET',
-	POST = 'POST',
-	PUT = 'PUT',
-	DELETE = 'DELETE',
+	GET = "GET",
+	POST = "POST",
+	PUT = "PUT",
+	DELETE = "DELETE",
 }
 
-export interface blogType{
-	title:string;
-	url:string;
-	description:string;
-	comments:number;
-	likes:number;
-	createdAt:number;
-	context:string;
+export interface blogType {
+	title: string;
+	url: string;
+	description: string;
+	comments: number;
+	likes: number;
+	createdAt: number;
+	context: string;
+}
+
+export interface profileType {
+	firstname: string;
+	lastname: string;
+	gender: string;
+	facebook?: string;
+	instagram?: string;
+	twitter?: string;
+	youtube?: string;
+	image: string;
+	bio:string;
 }

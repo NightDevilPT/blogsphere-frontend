@@ -1,6 +1,8 @@
 "use client";
 
 import PageLoading from "@/components/PageLoading";
+import { useAppDispatch } from "@/redux/hooks";
+import { fetchProfileData } from "@/redux/slices/profileSlice";
 import { Request } from "@/services/Request";
 import { SignupType } from "@/types/types";
 import { useSession } from "next-auth/react";
@@ -10,6 +12,7 @@ import React, { useEffect, useState } from "react";
 const page = ({ params }: { params: { redirectRoute: string } }) => {
 	const { data } = useSession();
 	const [apiCalled,setApiCalled]=useState<boolean>(true);
+	const dispatch = useAppDispatch()
 	const router = useRouter()
 
 	const addUser=async()=>{
@@ -24,7 +27,7 @@ const page = ({ params }: { params: { redirectRoute: string } }) => {
 			const res = await Request(`/user/create`,'POST',formData as SignupType);
 			if(res.jwt){
 				window.localStorage.setItem("token",res.jwt);
-				console.log("done")
+				dispatch(fetchProfileData())
 				router.push('/')
 			}
 		}

@@ -235,6 +235,7 @@ const CreateProfile = () => {
 											: "border-transparent"
 									}`}
 									onClick={() => setImage(items)}
+									key={items+index}
 								>
 									<img
 										src={avtarConstants[items]}

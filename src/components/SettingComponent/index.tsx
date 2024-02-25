@@ -7,7 +7,6 @@ import { IoLanguage } from "react-icons/io5";
 import { setTheme } from "@/redux/slices/themeSlice";
 import { changeTheme } from "@/services/ChangeTheme";
 import { setItems } from "@/services/localStorage";
-import { languages } from "@/config/languages";
 import { setLanguage } from "@/redux/slices/languageSlice";
 import useLanguageEffect from "@/hooks/languageHook";
 

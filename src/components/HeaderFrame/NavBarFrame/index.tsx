@@ -4,9 +4,6 @@ import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { FaChevronRight } from "react-icons/fa";
 
 import logo from "../../../assets/dark.png";
-import { useAppSelector } from "@/redux/hooks";
-import { RootState } from "@/redux/store";
-import { languages } from "@/config/languages";
 import useLanguageEffect from "@/hooks/languageHook";
 
 interface IProps {

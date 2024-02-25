@@ -1,6 +1,7 @@
 'use client'
 
 import CreateProfile from "@/components/CreatePrrofileComponent/CreateProfile";
+import useLanguageEffect from "@/hooks/languageHook";
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
 import Link from "next/link";
@@ -9,6 +10,7 @@ import { IoChevronBackOutline } from "react-icons/io5";
 
 const page = () => {
 	const {data} = useAppSelector((state:RootState)=>state.profile);
+	const dictionary = useLanguageEffect();
 	return (
 		<div className="container max-sm:px-5 ">
 			<Link href={'/'} className="w-full">
@@ -18,7 +20,7 @@ const page = () => {
 					<button className={`px-3 py-1 rounded text-primary-fg`}>
 						<IoChevronBackOutline className={`w-5 h-5`} />
 					</button>
-					{data?.profile?"Edit Profile":"Create Profile"}
+					{data?.profile?dictionary?.profile.editprofile||"Edit Profile":dictionary?.profile.createprofile||"Create Profile"}
 				</h1>
 			</Link>
 			<CreateProfile />

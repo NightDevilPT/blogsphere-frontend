@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { Request } from "@/services/Request";
 import ShowNotification from "../ShowNotification";
 import { fetchProfileData } from "@/redux/slices/profileSlice";
+import useLanguageEffect from "@/hooks/languageHook";
 
 const CreateProfile = () => {
 	const avtarNames = Object.keys(avtarConstants);
@@ -21,6 +22,7 @@ const CreateProfile = () => {
 	const [loading, setLoading] = useState<boolean>(false);
 	const profile = useAppSelector((state: RootState) => state.profile);
 	const dispatch = useAppDispatch();
+	const dictionary = useLanguageEffect();
 
 	const createProfile = async (event: any) => {
 		event.preventDefault();
@@ -80,7 +82,7 @@ const CreateProfile = () => {
 					className={`px-3 py-1 rounded text-primary-bg bg-primary-fg font-bold`}
 					onClick={() => setShowDialog(true)}
 				>
-					Choose avtar
+					{dictionary?.profile.chooseavtar}
 				</button>
 			</div>
 			<div
@@ -96,12 +98,14 @@ const CreateProfile = () => {
 						<h1
 							className={`relative w-full rounded text-xl text-primary-fg py-2 after:content-[''] after:w-56 after:h-1 after:bg-red-600 after:absolute after:bottom-0 after:left-0 after:rounded`}
 						>
-							Personal Information
+							{dictionary?.profile.personalinformation}
 						</h1>
 						<div className="w-full h-auto grid grid-cols-2 gap-5 max-[580px]:grid-cols-1">
 							<InputComponent
 								type="text"
-								label="firstname"
+								label={
+									dictionary?.profile.firstname || "firstname"
+								}
 								required={true}
 								value={
 									profile.data?.profile?.firstname
@@ -111,7 +115,9 @@ const CreateProfile = () => {
 							/>
 							<InputComponent
 								type="text"
-								label="lastname"
+								label={
+									dictionary?.profile.lastname || "lastname"
+								}
 								required={true}
 								value={
 									profile.data?.profile?.lastname
@@ -122,7 +128,7 @@ const CreateProfile = () => {
 						</div>
 						<InputSelectComponent
 							type="text"
-							label="gender"
+							label={dictionary?.profile.gender||"gender"}
 							required={true}
 							values={["male", "female", "other"]}
 							value={
@@ -133,7 +139,7 @@ const CreateProfile = () => {
 						/>
 						<InputComponent
 							type="textarea"
-							label="bio"
+							label={dictionary?.profile.bio||"bio"}
 							required={true}
 							value={
 								profile.data?.profile?.bio
@@ -149,12 +155,12 @@ const CreateProfile = () => {
 						<h1
 							className={`relative w-full rounded text-xl text-primary-fg py-2 after:content-[''] after:w-56 after:h-1 after:bg-red-600 after:absolute after:bottom-0 after:left-0 after:rounded`}
 						>
-							Social Information
+							{dictionary?.profile.socialinformation}
 						</h1>
 						<div className="w-full h-auto grid grid-cols-2 gap-5 max-[580px]:grid-cols-1">
 							<InputComponent
 								type="text"
-								label="facebook"
+								label={dictionary?.profile.facebook||"facebook"}
 								value={
 									profile.data?.profile?.facebook
 										? profile.data.profile.facebook
@@ -174,7 +180,7 @@ const CreateProfile = () => {
 						<div className="w-full h-auto grid grid-cols-2 gap-5 max-[580px]:grid-cols-1">
 							<InputComponent
 								type="text"
-								label="twitter"
+								label={dictionary?.profile.twitter||"twitter"}
 								value={
 									profile.data?.profile?.twitter
 										? profile.data.profile.twitter
@@ -183,7 +189,7 @@ const CreateProfile = () => {
 							/>
 							<InputComponent
 								type="text"
-								label="youtube"
+								label={dictionary?.profile.youtube||"youtube"}
 								value={
 									profile.data?.profile?.youtube
 										? profile.data.profile.youtube
@@ -198,8 +204,8 @@ const CreateProfile = () => {
 						disabled={loading}
 					>
 						{profile.data?.profile
-							? "Update Profile"
-							: "Save Profile"}{" "}
+							? dictionary?.profile.updateprofile||"Update Profile"
+							: dictionary?.profile.saveprofile||"Save Profile"}{" "}
 						{loading && (
 							<span
 								className={`w-5 h-5 border-2 rounded-full border-slate-300 border-t-secondary-fg animate-spin`}
@@ -235,7 +241,7 @@ const CreateProfile = () => {
 											: "border-transparent"
 									}`}
 									onClick={() => setImage(items)}
-									key={items+index}
+									key={items + index}
 								>
 									<img
 										src={avtarConstants[items]}

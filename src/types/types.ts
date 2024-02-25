@@ -49,5 +49,74 @@ export interface profileType {
 	twitter?: string;
 	youtube?: string;
 	image: string;
+	bio: string;
+}
+
+interface HeaderTranslations {
+	home: string;
+	blogs: string;
+	contactus: string;
+	aboutus: string;
+	search: string;
+	signup: string;
+	login: string;
+	dashboard: string;
+	myprofile: string;
+	editprofile: string;
+	setting: string;
+	logout: string;
+}
+
+interface BannerTranslations {
+	title: string;
+	subtitle: string;
+	placeholder: string;
+	search: string;
+}
+
+interface SettingTranslation {
+	setting: string;
+	theme: string;
+	language: string;
+	languagechange: string;
+	themechange: string;
+	dark: string;
+	light: string;
+}
+
+interface FooterTranslation {
+	aboutus: string;
+	address: string;
+	contactus: string;
+	title: string;
+	subtitle: string;
+	email: string;
+	description: string;
+	submit: string;
+}
+
+interface ProfileTranslation{
+	createprofile:string;
+	updateprofile:string;
+	personalinformation:string;
+	socialinformation:string;
+	chooseavtar:string;
+	firstname:string;
+	lastname:string;
+	gender:string;
 	bio:string;
+	facebook:string;
+	instagram:string;
+	twitter:string;
+	youtube:string;
+	saveprofile:string;
+	editprofile:string;
+}
+
+export interface languagesTranslation {
+	header: HeaderTranslations;
+	banner: BannerTranslations;
+	setting: SettingTranslation;
+	footer:FooterTranslation;
+	profile:ProfileTranslation;
 }

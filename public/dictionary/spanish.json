@@ -1,0 +1,58 @@
+{
+	"header": {
+		"home": "Inicio",
+		"blogs": "Blogs",
+		"contactus": "Contáctenos",
+		"aboutus": "Sobre nosotros",
+		"search": "Buscar",
+		"signup": "Registrarse",
+		"login": "Iniciar sesión",
+		"dashboard": "Panel de control",
+		"myprofile": "Mi perfil",
+		"editprofile": "Editar perfil",
+		"setting": "Configuración",
+		"logout": "Cerrar sesión"
+	},
+	"banner": {
+		"title": "Bienvenido a BlogSphere",
+		"subtitle": "Bienvenido al mundo de la escritura de blogs. Un lugar increíble para ser productivo y entretenido a través de actualizaciones diarias.",
+		"placeholder": "Explora ahora...",
+		"search": "Buscar"
+	},
+	"setting": {
+		"setting": "Configuración",
+		"theme": "Tema",
+		"language": "Idioma",
+		"languagechange": "Cambiar idioma",
+		"themechange": "Cambiar tema",
+		"dark": "Oscuro",
+		"light": "Claro"
+	},
+	"footer": {
+		"aboutus": "Sobre nosotros",
+		"address": "Dirección",
+		"contactus": "Contáctenos",
+		"title": "Bienvenido a BlogSphere",
+		"subtitle": "Bienvenido al mundo de la escritura de blogs. Un lugar increíble para ser productivo y entretenido a través de actualizaciones diarias.",
+		"email": "Correo electrónico",
+		"description": "Descripción",
+		"submit": "Enviar"
+	},
+	"profile": {
+		"createprofile": "Crear perfil",
+		"updateprofile": "Actualizar perfil",
+		"editprofile": "Editar perfil",
+		"personalinformation": "Información personal",
+		"socialinformation": "Información social",
+		"chooseavtar": "Elegir avatar",
+		"firstname": "Nombre",
+		"lastname": "Apellido",
+		"gender": "Género",
+		"bio": "Biografía",
+		"facebook": "Facebook",
+		"instagram": "Instagram",
+		"twitter": "Twitter",
+		"youtube": "YouTube",
+		"saveprofile": "Guardar perfil"
+	}
+}

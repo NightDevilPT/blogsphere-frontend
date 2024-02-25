@@ -44,7 +44,11 @@ const FirstCallFunction = ({ children }: ChildProps) => {
 		);
 		changeTheme(window.localStorage.getItem("theme") || "dark");
 		dispatch(setTheme(window.localStorage.getItem("theme") || "dark"));
-		dispatch(setLanguage(window.localStorage.getItem("lang")||"french"))
+		window.localStorage.setItem(
+			"lang",
+			window.localStorage.getItem("lang") || "french"
+		);
+		dispatch(setLanguage(window.localStorage.getItem("lang") || "french"));
 	}, []);
 
 	return (

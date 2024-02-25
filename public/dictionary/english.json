@@ -1,0 +1,58 @@
+{
+	"header": {
+		"home": "Home",
+		"blogs": "Blogs",
+		"contactus": "Contact Us",
+		"aboutus": "About Us",
+		"search": "Search",
+		"signup": "Sign Up",
+		"login": "Login",
+		"dashboard": "Dashboard",
+		"myprofile": "My Profile",
+		"editprofile": "Edit Profile",
+		"setting": "Settings",
+		"logout": "Logout"
+	},
+	"banner": {
+		"title": "Welcome to BlogSphere",
+		"subtitle": "Welcome to the world of blog writing Awesome place to make oneself productive and entertained through daily updates.",
+		"placeholder": "Explore Now...",
+		"search": "Search"
+	},
+	"setting": {
+		"setting": "Settings",
+		"theme": "Theme",
+		"language": "Language",
+		"languagechange": "Change Language",
+		"themechange": "Change Theme",
+		"dark": "Dark",
+		"light": "Light"
+	},
+	"footer": {
+		"aboutus": "About Us",
+		"address": "Address",
+		"contactus": "Contact Us",
+		"title": "Welcome to BlogSphere",
+		"subtitle": "Welcome to the world of blog writing Awesome place to make oneself productive and entertained through daily updates.",
+		"email": "Email",
+		"description": "Description",
+		"submit": "Submit"
+	},
+	"profile": {
+		"createprofile": "Create Profile",
+		"updateprofile": "Update Profile",
+		"editprofile": "Edit Profile",
+		"personalinformation": "Personal Information",
+		"socialinformation": "Social Information",
+		"chooseavtar": "Choose Avatar",
+		"firstname": "First Name",
+		"lastname": "Last Name",
+		"gender": "Gender",
+		"bio": "Bio",
+		"facebook": "Facebook",
+		"instagram": "Instagram",
+		"twitter": "Twitter",
+		"youtube": "YouTube",
+		"saveprofile": "Save Profile"
+	}
+}

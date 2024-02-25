@@ -9,6 +9,7 @@ import { changeTheme } from "@/services/ChangeTheme";
 import { setItems } from "@/services/localStorage";
 import { languages } from "@/config/languages";
 import { setLanguage } from "@/redux/slices/languageSlice";
+import useLanguageEffect from "@/hooks/languageHook";
 
 const themesConstants: any = {
 	dark: {
@@ -17,17 +18,6 @@ const themesConstants: any = {
 		"primary-fg": "bg-[#e2e8f0]",
 		"secondary-fg": "bg-[#64748b]",
 		highlight: "bg-[#06b6d4]",
-		divider: "bg-[#1e293b]",
-		from: "from-[#e98edf]",
-		via: "via-[#f85e8a]",
-		to: "to-[#fb8934]",
-	},
-	dark1: {
-		"primary-bg": "bg-[#302e49]",
-		"secondary-bg": "bg-[#3d3b58]",
-		"primary-fg": "bg-[#e2e8f0]",
-		"secondary-fg": "bg-[#64748b]",
-		highlight: "bg-[#04d9ff]",
 		divider: "bg-[#1e293b]",
 		from: "from-[#e98edf]",
 		via: "via-[#f85e8a]",
@@ -51,10 +41,6 @@ const languageConstants: any = {
 		label: "English",
 		text: "English",
 	},
-	hindi: {
-		label: "Hindi",
-		text: "हिंदी",
-	},
 	french: {
 		label: "French",
 		text: "française",
@@ -67,6 +53,7 @@ const languageConstants: any = {
 
 const SettingComponent = () => {
 	const [button, setButton] = useState<string>("language");
+	const dictionary = useLanguageEffect();
 
 	return (
 		<div
@@ -85,7 +72,7 @@ const SettingComponent = () => {
 				>
 					<MdBrightness4 className={`w-5 h-5`} />
 					<span className={`w-full h-auto text-sm font-bold`}>
-						Theme
+						{dictionary?.setting.theme}
 					</span>
 				</button>
 				<button
@@ -98,7 +85,7 @@ const SettingComponent = () => {
 				>
 					<IoLanguage className={`w-5 h-5`} />
 					<span className={`w-full h-auto text-sm font-bold`}>
-						Language
+						{dictionary?.setting.language}
 					</span>
 				</button>
 			</div>
@@ -107,7 +94,9 @@ const SettingComponent = () => {
 				className={`w-full h-full py-5 flex justify-start items-start flex-col gap-5`}
 			>
 				<h1 className={`capitalize text-2xl font-bold text-primary-fg`}>
-					{button} Change
+					{button === "language"
+						? dictionary?.setting.languagechange
+						: dictionary?.setting.themechange}
 				</h1>
 				{button === "theme" ? (
 					<ThemeButtonFrame />
@@ -122,6 +111,7 @@ const SettingComponent = () => {
 const ThemeButtonFrame = () => {
 	const { theme } = useAppSelector((state: RootState) => state.theme);
 	const dispatch = useAppDispatch();
+	const dictionary = useLanguageEffect();
 	return (
 		<div
 			className={`w-full h-auto max-h-full overflow-y-auto flex justify-start items-start flex-wrap gap-5`}
@@ -147,7 +137,9 @@ const ThemeButtonFrame = () => {
 								className={`w-auto h-auto flex justify-center items-start flex-col gap-1`}
 							>
 								<span className={`text-xl capitalize`}>
-									{items}
+									{items === "dark"
+										? dictionary?.setting.dark
+										: dictionary?.setting.light}
 								</span>
 								<div
 									className={`w-auto h-auto justify-center items-center flex gap-1`}
@@ -190,33 +182,35 @@ const LanguageButtonFrame = () => {
 		<div
 			className={`w-full h-auto max-h-full overflow-y-auto flex justify-start items-start flex-wrap gap-5`}
 		>
-			{Object.keys(languageConstants).map((items: string, index: number) => {
-				console.log(items===lang,items)
-				return (
-					<button
-						className={`w-auto h-auto flex justify-start items-center gap-5 rounded py-2 px-4 border-[1px] border-primary-fg text-primary-fg`}
-						key={index + items}
-						onClick={() => {
-							dispatch(setLanguage(items))
-							window.localStorage.setItem("lang",items)
-						}}
-					>
-						<span
-							className={`relative w-4 h-4 rounded-full ${
-								lang === items && "bg-primary-fg"
-							} flex justify-center items-center after:rounded-full after:content-[''] after:absolute after:w-[calc(100%+8px)] after:h-[calc(100%+8px)] after:border-[1px] after:border-primary-fg`}
-						></span>
-						<div
-							className={`w-auto h-auto flex justify-center items-start flex-col`}
+			{Object.keys(languageConstants).map(
+				(items: string, index: number) => {
+					console.log(items === lang, items);
+					return (
+						<button
+							className={`w-auto h-auto flex justify-start items-center gap-5 rounded py-2 px-4 border-[1px] border-primary-fg text-primary-fg`}
+							key={index + items}
+							onClick={() => {
+								dispatch(setLanguage(items));
+								window.localStorage.setItem("lang", items);
+							}}
 						>
-							<span className={`text-xl capitalize`}>
-								{items}
-							</span>
-							<span>{languageConstants[items].text}</span>
-						</div>
-					</button>
-				);
-			})}
+							<span
+								className={`relative w-4 h-4 rounded-full ${
+									lang === items && "bg-primary-fg"
+								} flex justify-center items-center after:rounded-full after:content-[''] after:absolute after:w-[calc(100%+8px)] after:h-[calc(100%+8px)] after:border-[1px] after:border-primary-fg`}
+							></span>
+							<div
+								className={`w-auto h-auto flex justify-center items-start flex-col`}
+							>
+								<span className={`text-xl capitalize`}>
+									{items}
+								</span>
+								<span>{languageConstants[items].text}</span>
+							</div>
+						</button>
+					);
+				}
+			)}
 		</div>
 	);
 };

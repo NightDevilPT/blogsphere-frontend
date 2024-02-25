@@ -24,6 +24,8 @@ import { RootState } from "@/redux/store";
 import { logout } from "@/redux/slices/profileSlice";
 import { avtarConstants } from "@/constants/avtars";
 import { useOutsideClick } from "@/hooks/clickOutside";
+import useLanguageEffect from "@/hooks/languageHook";
+import { removeItems } from "@/services/localStorage";
 
 interface IProps {
 	setShowNav: Dispatch<SetStateAction<boolean>>;
@@ -37,9 +39,11 @@ const UserNavFrame = ({ setShowNav }: IProps) => {
 	const [hide, setHide] = useState<boolean>(false);
 	const dispatch = useDispatch();
 	const userNavRef = useRef<HTMLDivElement | null>(null);
-	const {theme}=useAppSelector((state:RootState)=>state.theme);
+	const { theme } = useAppSelector((state: RootState) => state.theme);
 
 	useOutsideClick(userNavRef, () => setHide(false));
+	const dictionary = useLanguageEffect();
+
 	useEffect(() => {
 		setImage(
 			data && data.profile
@@ -56,7 +60,9 @@ const UserNavFrame = ({ setShowNav }: IProps) => {
 				className={`px-2 py-1 h-7 max-[400px]:w-9 rounded bg-border text-secondary-fg flex justify-center items-center font-bold text-sm gap-2`}
 				onClick={() => dispatch(setShowSearch(true))}
 			>
-				<span className={`max-[400px]:hidden`}>Search</span>
+				<span className={`max-[400px]:hidden`}>
+					{dictionary?.header.search}
+				</span>
 				<FiSearch className={`flex-1`} />
 			</button>
 			<button
@@ -71,9 +77,13 @@ const UserNavFrame = ({ setShowNav }: IProps) => {
 			</button>
 
 			<div
-				className={`absolute right-0 max-lg:-right-10 top-12 w-52 h-auto p-3 bg-secondary-bg rounded ${
+				className={`absolute right-0 max-lg:-right-10 top-12 w-56 h-auto p-3 bg-secondary-bg rounded ${
 					hide ? "flex" : "hidden"
-				} shadow-xl ${theme==="dark"?" shadow-black/40":"shadow-slate-900/40"}`}
+				} shadow-xl ${
+					theme === "dark"
+						? " shadow-black/40"
+						: "shadow-slate-900/40"
+				}`}
 				ref={userNavRef}
 			>
 				{data ? (
@@ -94,9 +104,10 @@ interface UserProps {
 }
 const UserNavPopupFrame = ({ user, avtar }: UserProps) => {
 	const dispatch = useDispatch();
+	const dictionary = useLanguageEffect();
 	const setLogout = () => {
 		dispatch(logout());
-		window.localStorage.removeItem("token");
+		removeItems("token");
 	};
 	return (
 		<div className={`w-full flex justify-start items-start flex-col gap-4`}>
@@ -128,20 +139,20 @@ const UserNavPopupFrame = ({ user, avtar }: UserProps) => {
 					className={`w-full h-auto flex justify-start items-center gap-2 text-primary-fg rounded text-sm px-2 py-2 hover:bg-border`}
 				>
 					<MdSpaceDashboard className={`w-5 h-5`} />
-					Dashboard
+					{dictionary?.header.dashboard}
 				</button>
 				<button
 					className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-border`}
 				>
 					<FaUserCircle className={`w-5 h-5`} />
-					My Profile
+					{dictionary?.header.myprofile}
 				</button>
 				<Link href={"/create-profile"} className="w-full">
 					<button
 						className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-border`}
 					>
 						<BiSolidEdit className={`w-5 h-5`} />
-						Edit Profile
+						{dictionary?.header.editprofile}
 					</button>
 				</Link>
 				<Link href={"/setting"} className="w-full">
@@ -149,7 +160,7 @@ const UserNavPopupFrame = ({ user, avtar }: UserProps) => {
 						className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-border`}
 					>
 						<RiSettingsLine className={`w-5 h-5`} />
-						Setting
+						{dictionary?.header.setting}
 					</button>
 				</Link>
 			</div>
@@ -158,13 +169,14 @@ const UserNavPopupFrame = ({ user, avtar }: UserProps) => {
 				onClick={setLogout}
 			>
 				<HiOutlineLogout className={`w-5 h-5`} />
-				Logout
+				{dictionary?.header.logout}
 			</button>
 		</div>
 	);
 };
 
 const SignupLoginFrame = () => {
+	const dictionary = useLanguageEffect();
 	return (
 		<div className="w-full h-auto flex justify-between items-center flex-col gap-3">
 			<div className="w-full h-auto flex justify-between items-center gap-3">
@@ -172,13 +184,13 @@ const SignupLoginFrame = () => {
 					className={`w-full h-auto py-1 font-bold text-sm rounded flex justify-center items-center gap-2 bg-primary-fg text-primary-bg`}
 					href={"/auth/signup"}
 				>
-					Signup
+					{dictionary?.header.signup}
 				</Link>
 				<Link
-					className={`w-full h-auto py-1 font-bold text-sm rounded flex justify-center items-center gap-2 border-[1px] border-primary-fg text-primary-fg hover:bg-primary-fg hover:text-primary-bg transition-all duration-300`}
+					className={`w-full h-auto py-1 font-bold text-sm rounded text-center gap-2 border-[1px] border-primary-fg text-primary-fg hover:bg-primary-fg hover:text-primary-bg transition-all duration-300 line-clamp-1 truncate`}
 					href={"/auth/login"}
 				>
-					Login
+					{dictionary?.header.login}
 				</Link>
 			</div>
 			<Link href={"/setting"} className="w-full">
@@ -186,7 +198,8 @@ const SignupLoginFrame = () => {
 					className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-border`}
 				>
 					<RiSettingsLine className={`w-5 h-5`} />
-					Setting
+
+					{dictionary?.header.setting}
 				</button>
 			</Link>
 		</div>

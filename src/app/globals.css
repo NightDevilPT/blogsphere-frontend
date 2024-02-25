@@ -11,9 +11,9 @@ html[data-theme="dark"] {
 	--secondary-fg: #64748b;
 	--highlight: #04d9ff;
 	--divider: #1e293b;
-	--from:#1d3d9f;
-	--via:#cc2ef3;
-	--to:#728e92;
+	--from:#A76748;
+	--via:#BC2C67;
+	--to:#7033C1;
 }
 /* #e98edf,#f85e8a,#fb8934 */
 html[data-theme="dark1"] {
@@ -23,9 +23,9 @@ html[data-theme="dark1"] {
 	--secondary-fg: #64748b;
 	--highlight: #04d9ff;
 	--divider: #1e293b;
-	--from:#e98edf;
-	--via:#f85e8a;
-	--to:#fb8934;
+	--from:#A76748;
+	--via:#BC2C67;
+	--to:#7033C1;
 }
 
 html[data-theme="light"] {
@@ -35,9 +35,9 @@ html[data-theme="light"] {
 	--secondary-fg: #666666;
 	--highlight: #0004ff;
 	--divider: #dddddd;
-	--from:#e98edf;
-	--via:#f85e8a;
-	--to:#fb8934;
+	--from:#FAD961;
+	--via:#F76B1C;
+	--to:#FF4141;
 }
 
 .loader {

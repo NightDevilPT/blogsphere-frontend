@@ -24,7 +24,7 @@ const BannerFrame = () => {
 			></div>
 			<div
 				className={`w-full h-full absolute left-0 top-0 bg-gradient-to-t  ${
-					theme === "dark"
+					theme !== "light"
 						? "from-primary-bg to-transparent"
 						: ""
 				}`}

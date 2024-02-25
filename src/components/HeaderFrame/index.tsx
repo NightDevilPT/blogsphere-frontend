@@ -25,7 +25,7 @@ const HeaderFrame = () => {
 					className={`w-auto h-auto flex justify-center items-center gap-3`}
 				>
 					<UserNavFrame setShowNav={setShowNav} />
-					<button className="w-8 h-8 max-lg:flex text-primary-fg hover:bg-secondary-bg p-1 hidden justify-center items-center rounded" onClick={()=>{
+					<button className="w-8 h-8 max-lg:flex text-slate-300 p-1 hidden justify-center items-center rounded" onClick={()=>{
 						setShowNav(true)
 					}}>
 						<CgMenuLeft className="w-full h-full" />

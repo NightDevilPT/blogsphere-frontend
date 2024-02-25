@@ -128,14 +128,14 @@ const CarouselFrame = ({ changeLayout, title }: IProps) => {
 							<TfiLayoutListThumbAlt
 								className={`w-5 h-5 relative z-10 transition-all delay-200 duration-200 ${
 									layout
-										? "text-primary-fg"
+										? "text-slate-200"
 										: "text-primary-fg"
 								}`}
 							/>
 							<BsGridFill
 								className={`w-5 h-5 relative z-10  transition-all delay-200 duration-200 ${
 									!layout
-										? "text-primary-fg"
+										? "text-slate-200"
 										: "text-primary-fg"
 								}`}
 							/>

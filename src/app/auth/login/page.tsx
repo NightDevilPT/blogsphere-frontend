@@ -62,18 +62,20 @@ const index = () => {
 						label="email"
 						required={true}
 						type="email"
+						background="bg-slate-900"
 					/>
 					<InputComponent
 						label="password"
 						required={true}
 						type="password"
+						background="bg-slate-900"
 					/>
 					<div
 						className={`w-full h-auto flex justify-end items-end gap-2 text-xs`}
 					>
 						<Link
 							href={"/auth/resend/forget-password"}
-							className="text-highlight font-bold"
+							className="text-sky-600 font-bold"
 						>
 							Forget Password
 						</Link>
@@ -87,18 +89,18 @@ const index = () => {
 						Login{" "}
 						{loading && (
 							<span
-								className={`w-5 h-5 border-2 rounded-full border-slate-300 border-t-secondary-fg animate-spin`}
+								className={`w-5 h-5 border-2 rounded-full border-slate-300 border-t-slate-800 animate-spin`}
 							/>
 						)}
 					</button>
 				</form>
 				<div
-					className={`w-full h-auto flex justify-center items-center gap-2 text-xs mt-1 text-primary-fg`}
+					className={`w-full h-auto flex justify-center items-center gap-2 text-xs mt-1 text-slate-300`}
 				>
 					Create a new Account?{" "}
 					<Link
 						href={"/auth/signup"}
-						className="text-highlight font-bold"
+						className="text-sky-600 font-bold"
 					>
 						Signup
 					</Link>
@@ -107,7 +109,7 @@ const index = () => {
 					className={`w-[80%] flex justify-center items-center gap-1 my-4`}
 				>
 					<span className={`flex-1 h-[2px] bg-border`}></span>
-					<span className={` text-primary-fg`}>OR</span>
+					<span className={` text-slate-300`}>OR</span>
 					<span
 						className={`flex-1 h-[2px] bg-border font-bold`}
 					></span>
@@ -116,7 +118,7 @@ const index = () => {
 					className={`w-full h-auto flex justify-between items-center gap-2`}
 				>
 					<button
-						className={`w-full h-auto py-2 rounded flex justify-center items-center gap-2 bg-primary-fg text-primary-bg`}
+						className={`w-full h-auto py-2 rounded flex justify-center items-center gap-2 bg-slate-200 text-slate-950`}
 						onClick={() => {
 							signIn("github", {
 								callbackUrl: "/auth/provider/github",
@@ -124,7 +126,7 @@ const index = () => {
 						}}
 					>
 						<FaGithub className={`w-5 h-5`} />
-						<span className={`text-sm font-bold text-primary-bg`}>
+						<span className={`text-sm font-bold text-slate-900`}>
 							Login With Github
 						</span>
 					</button>

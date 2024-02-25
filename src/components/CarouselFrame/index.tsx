@@ -121,21 +121,21 @@ const CarouselFrame = ({ changeLayout, title }: IProps) => {
 							}}
 						>
 							<div
-								className={`w-7 h-7 bg-highlight absolute rounded ${
+								className={`w-7 h-7 absolute rounded ${
 									layout ? "left-[5px]" : "left-[50%]"
-								} transition-all duration-300`}
+								} transition-all duration-300 bg-gradient-to-br from-from via-via to-to`}
 							></div>
 							<TfiLayoutListThumbAlt
 								className={`w-5 h-5 relative z-10 transition-all delay-200 duration-200 ${
 									layout
-										? "text-secondary-bg"
+										? "text-primary-fg"
 										: "text-primary-fg"
 								}`}
 							/>
 							<BsGridFill
 								className={`w-5 h-5 relative z-10  transition-all delay-200 duration-200 ${
 									!layout
-										? "text-secondary-bg"
+										? "text-primary-fg"
 										: "text-primary-fg"
 								}`}
 							/>

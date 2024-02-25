@@ -51,16 +51,19 @@ const index = () => {
 						label="username"
 						required={true}
 						type="text"
+						background="bg-slate-900"
 					/>
 					<InputComponent
 						label="email"
 						required={true}
 						type="email"
+						background="bg-slate-900"
 					/>
 					<InputComponent
 						label="password"
 						required={true}
 						type="password"
+						background="bg-slate-900"
 					/>
 
 					<div
@@ -69,7 +72,7 @@ const index = () => {
 						Already have an account?{" "}
 						<Link
 							href={"/auth/login"}
-							className="text-highlight font-bold"
+							className=" text-sky-600 font-bold"
 						>
 							Login
 						</Link>
@@ -77,13 +80,13 @@ const index = () => {
 
 					<button
 						type="submit"
-						className={`w-full h-10 bg-slate-200 text-slate-900 font-bold rounded flex justify-center items-center gap-2`}
+						className={`w-full h-10 bg-slate-200 text-slate-950 font-bold rounded flex justify-center items-center gap-2`}
 						disabled={loading}
 					>
 						Register{" "}
 						{loading && (
 							<span
-								className={`w-5 h-5 border-2 rounded-full border-slate-300 border-t-secondary-fg animate-spin`}
+								className={`w-5 h-5 border-2 rounded-full border-slate-300 border-t-slate-800 animate-spin`}
 							/>
 						)}
 					</button>
@@ -92,7 +95,7 @@ const index = () => {
 					className={`w-[80%] flex justify-center items-center gap-1 my-4`}
 				>
 					<span className={`flex-1 h-[2px] bg-border`}></span>
-					<span className={` text-primary-fg`}>OR</span>
+					<span className={` text-slate-300`}>OR</span>
 					<span
 						className={`flex-1 h-[2px] bg-border font-bold`}
 					></span>
@@ -101,13 +104,13 @@ const index = () => {
 					className={`w-full h-auto flex justify-between items-center gap-2`}
 				>
 					<button
-						className={`w-full h-auto py-2 rounded flex justify-center items-center gap-2 bg-primary-fg text-primary-bg`}
+						className={`w-full h-auto py-2 rounded flex justify-center items-center gap-2 bg-slate-200 text-slate-950`}
 						onClick={() => {
 							signIn("github", { callbackUrl: "/auth/provider/github" });
 						}}
 					>
 						<FaGithub className={`w-5 h-5`} />
-						<span className={`text-sm font-bold text-primary-bg`}>
+						<span className={`text-sm font-bold text-slate-950`}>
 							SignUp With Github
 						</span>
 					</button>

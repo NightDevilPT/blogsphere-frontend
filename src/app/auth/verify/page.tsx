@@ -47,7 +47,7 @@ const page = () => {
 
 	return (
 		<div className={`flex h-full justify-center items-center gap-1 flex-col`}>
-			<div className="px-5 py-2 rounded bg-secondary-bg flex justify-center items-center gap-4">
+			<div className="px-5 py-2 rounded bg-slate-900 flex justify-center items-center gap-4">
 				{filterText()} {filterIcons()}
 			</div>
 			{loading==="error"&&<Link href={'/auth/resend/send-link'} className="text-highlight text-xs">Resend Verification Link</Link>}

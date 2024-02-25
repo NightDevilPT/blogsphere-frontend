@@ -11,7 +11,7 @@ interface IProps {
 const VerticalCardFrame = ({ blogs }: IProps) => {
 	return (
 		<div
-			className={`min-w-[320px] h-auto flex justify-start items-start flex-col bg-secondary-bg rounded overflow-hidden`}
+			className={`min-w-[320px] h-auto flex justify-start items-start flex-col bg-secondary-bg rounded overflow-hidden hover:shadow-lg hover:shadow-slate-900/20 transition-all duration-300`}
 		>
 			<div className={`w-full h-40 rounded`}>
 				<img

@@ -29,6 +29,9 @@ const config: Config = {
 				highlight: "var(--highlight)",
 				"primary-fg": "var(--primary-fg)",
 				"secondary-fg": "var(--secondary-fg)",
+				from:"var(--from)",
+				to:"var(--to)",
+				via:"var(--via)"
 			},
 		},
 	},

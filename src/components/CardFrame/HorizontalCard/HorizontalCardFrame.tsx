@@ -12,7 +12,7 @@ interface IProps {
 const HorizontalCardFrame = ({ blogs }: IProps) => {
 	return (
 		<div
-			className={`relative group min-w-[320px] h-44 flex justify-start items-start gap-1 bg-secondary-bg rounded overflow-hidden cursor-pointer`}
+			className={`relative group min-w-[320px] h-44 flex justify-start items-start gap-1 bg-secondary-bg rounded overflow-hidden cursor-pointer hover:shadow-lg hover:shadow-slate-900/20 transition-all duration-300`}
 		>
 			<div className={` w-28 min-w-[120px] h-full bg-border`}>
 				<img src={blogs.url} className={`w-full h-full object-cover`} alt="blogs-image" />

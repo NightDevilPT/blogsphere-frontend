@@ -2,12 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface searchState {
-	show: boolean;
+	showSearch: boolean;
+	showSetting:boolean;
 }
 
 // Define the initial state using that type
 const initialState: searchState = {
-	show: false,
+	showSearch: false,
+	showSetting:false
 };
 
 export const showSearchSlice = createSlice({
@@ -15,10 +17,13 @@ export const showSearchSlice = createSlice({
 	initialState,
 	reducers: {
 		setShowSearch: (state: any, action: PayloadAction<boolean>) => {
-			state.show = action.payload;
+			state.showSearch = action.payload;
+		},
+		setShowSetting: (state: any, action: PayloadAction<boolean>) => {
+			state.showSetting = action.payload;
 		}
 	},
 });
 
-export const { setShowSearch } = showSearchSlice.actions;
+export const { setShowSearch,setShowSetting } = showSearchSlice.actions;
 export default showSearchSlice.reducer;

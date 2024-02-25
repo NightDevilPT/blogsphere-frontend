@@ -17,35 +17,17 @@ import { HiOutlineLogout } from "react-icons/hi";
 import { RiSettingsLine } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
 import { useDispatch } from "react-redux";
-import { setShowSearch } from "@/redux/slices/searchSlice";
+import { setShowSearch, setShowSetting } from "@/redux/slices/dialogSlice";
 import Link from "next/link";
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
 import { logout } from "@/redux/slices/profileSlice";
 import { avtarConstants } from "@/constants/avtars";
+import { useOutsideClick } from "@/hooks/clickOutside";
 
 interface IProps {
 	setShowNav: Dispatch<SetStateAction<boolean>>;
 }
-
-const useOutsideClick = (
-	ref: React.MutableRefObject<HTMLDivElement | null>,
-	callback: any
-) => {
-	useEffect(() => {
-		const handleClickOutside = (event: any) => {
-			if (ref.current && !ref.current.contains(event.target)) {
-				callback();
-			}
-		};
-
-		document.addEventListener("click", handleClickOutside);
-
-		return () => {
-			document.removeEventListener("click", handleClickOutside);
-		};
-	}, [ref, callback]);
-};
 
 const UserNavFrame = ({ setShowNav }: IProps) => {
 	const { data } = useAppSelector((state: RootState) => state.profile);
@@ -55,6 +37,7 @@ const UserNavFrame = ({ setShowNav }: IProps) => {
 	const [hide, setHide] = useState<boolean>(false);
 	const dispatch = useDispatch();
 	const userNavRef = useRef<HTMLDivElement | null>(null);
+	const {theme}=useAppSelector((state:RootState)=>state.theme);
 
 	useOutsideClick(userNavRef, () => setHide(false));
 	useEffect(() => {
@@ -88,9 +71,9 @@ const UserNavFrame = ({ setShowNav }: IProps) => {
 			</button>
 
 			<div
-				className={`absolute right-0 max-lg:-right-10 top-12 w-52 h-auto p-3 bg-border rounded ${
+				className={`absolute right-0 max-lg:-right-10 top-12 w-52 h-auto p-3 bg-secondary-bg rounded ${
 					hide ? "flex" : "hidden"
-				}`}
+				} shadow-xl ${theme==="dark"?" shadow-black/40":"shadow-slate-900/40"}`}
 				ref={userNavRef}
 			>
 				{data ? (
@@ -142,31 +125,33 @@ const UserNavPopupFrame = ({ user, avtar }: UserProps) => {
 				className={`w-full h-auto flex justify-start items-start flex-col gap-1`}
 			>
 				<button
-					className={`w-full h-auto flex justify-start items-center gap-2 text-primary-fg rounded text-sm px-2 py-2 hover:bg-secondary-bg`}
+					className={`w-full h-auto flex justify-start items-center gap-2 text-primary-fg rounded text-sm px-2 py-2 hover:bg-border`}
 				>
 					<MdSpaceDashboard className={`w-5 h-5`} />
 					Dashboard
 				</button>
 				<button
-					className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-secondary-bg`}
+					className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-border`}
 				>
 					<FaUserCircle className={`w-5 h-5`} />
 					My Profile
 				</button>
 				<Link href={"/create-profile"} className="w-full">
 					<button
-						className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-secondary-bg`}
+						className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-border`}
 					>
 						<BiSolidEdit className={`w-5 h-5`} />
 						Edit Profile
 					</button>
 				</Link>
-				<button
-					className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-secondary-bg`}
-				>
-					<RiSettingsLine className={`w-5 h-5`} />
-					Setting
-				</button>
+				<Link href={"/setting"} className="w-full">
+					<button
+						className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-border`}
+					>
+						<RiSettingsLine className={`w-5 h-5`} />
+						Setting
+					</button>
+				</Link>
 			</div>
 			<button
 				className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-red-600`}
@@ -181,18 +166,28 @@ const UserNavPopupFrame = ({ user, avtar }: UserProps) => {
 
 const SignupLoginFrame = () => {
 	return (
-		<div className="w-full h-auto flex justify-between items-center gap-3">
-			<Link
-				className={`w-full h-auto py-1 font-bold text-sm rounded flex justify-center items-center gap-2 bg-primary-fg text-primary-bg`}
-				href={"/auth/signup"}
-			>
-				Signup
-			</Link>
-			<Link
-				className={`w-full h-auto py-1 font-bold text-sm rounded flex justify-center items-center gap-2 border-[1px] border-primary-fg text-primary-fg hover:bg-primary-fg hover:text-primary-bg transition-all duration-300`}
-				href={"/auth/login"}
-			>
-				Login
+		<div className="w-full h-auto flex justify-between items-center flex-col gap-3">
+			<div className="w-full h-auto flex justify-between items-center gap-3">
+				<Link
+					className={`w-full h-auto py-1 font-bold text-sm rounded flex justify-center items-center gap-2 bg-primary-fg text-primary-bg`}
+					href={"/auth/signup"}
+				>
+					Signup
+				</Link>
+				<Link
+					className={`w-full h-auto py-1 font-bold text-sm rounded flex justify-center items-center gap-2 border-[1px] border-primary-fg text-primary-fg hover:bg-primary-fg hover:text-primary-bg transition-all duration-300`}
+					href={"/auth/login"}
+				>
+					Login
+				</Link>
+			</div>
+			<Link href={"/setting"} className="w-full">
+				<button
+					className={`w-full h-auto flex justify-start items-center gap-3 text-primary-fg rounded text-sm px-2 py-2 hover:bg-border`}
+				>
+					<RiSettingsLine className={`w-5 h-5`} />
+					Setting
+				</button>
 			</Link>
 		</div>
 	);

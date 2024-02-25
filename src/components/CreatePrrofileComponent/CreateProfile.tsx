@@ -194,7 +194,7 @@ const CreateProfile = () => {
 					</div>
 					<button
 						type="submit"
-						className={`w-full h-10 mt-5 bg-slate-200 text-slate-900 font-bold rounded flex justify-center items-center gap-2`}
+						className={`w-full h-10 mt-5 font-bold rounded flex justify-center items-center gap-2 bg-gradient-to-br from-from via-via to-to`}
 						disabled={loading}
 					>
 						{profile.data?.profile
@@ -223,7 +223,7 @@ const CreateProfile = () => {
 					<h1>Choose Avtar</h1>
 				</div>
 				<div
-					className={` mt-3 min-h-[200px] h-56 bg-primary-bg p-5 rounded grid grid-cols-[repeat(auto-fit,_minmax(120px,1fr))] place-items-center gap-4 overflow-y-auto flex-wrap`}
+					className={` mt-3 min-h-[200px] h-56 bg-primary-bg p-5 rounded grid grid-cols-[repeat(auto-fit,_minmax(100px,1fr))] place-items-center gap-4 overflow-y-auto flex-wrap`}
 				>
 					{Object.keys(avtarConstants).map(
 						(items: string, index: number) => {

@@ -46,17 +46,18 @@ const index = () => {
 						label="email"
 						required={true}
 						type="email"
+						background="bg-slate-900"
 					/>
 
 					<button
 						type="submit"
-						className={`w-full h-10 bg-slate-200 text-slate-900 font-bold rounded flex justify-center items-center gap-2`}
+						className={`w-full h-10 bg-slate-200 text-slate-950 font-bold rounded flex justify-center items-center gap-2`}
 						disabled={loading}
 					>
 						Send Link{" "}
 						{loading && (
 							<span
-								className={`w-5 h-5 border-2 rounded-full border-slate-300 border-t-secondary-fg animate-spin`}
+								className={`w-5 h-5 border-2 rounded-full border-slate-300 border-t-slate-800 animate-spin`}
 							/>
 						)}
 					</button>

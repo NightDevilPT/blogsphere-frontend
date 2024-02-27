@@ -1,3 +1,4 @@
+
 export type ChildProps = {
 	children: React.ReactNode;
 };
@@ -31,13 +32,14 @@ export enum HttpMethod {
 }
 
 export interface blogType {
+	id:string;
+	tags:string[];
 	title: string;
 	url: string;
 	description: string;
 	comments: number;
 	likes: number;
 	createdAt: number;
-	context: string;
 }
 
 export interface profileType {
@@ -95,28 +97,35 @@ interface FooterTranslation {
 	submit: string;
 }
 
-interface ProfileTranslation{
-	createprofile:string;
-	updateprofile:string;
-	personalinformation:string;
-	socialinformation:string;
-	chooseavtar:string;
-	firstname:string;
-	lastname:string;
-	gender:string;
-	bio:string;
-	facebook:string;
-	instagram:string;
-	twitter:string;
-	youtube:string;
-	saveprofile:string;
-	editprofile:string;
+interface ProfileTranslation {
+	createprofile: string;
+	updateprofile: string;
+	personalinformation: string;
+	socialinformation: string;
+	chooseavtar: string;
+	firstname: string;
+	lastname: string;
+	gender: string;
+	bio: string;
+	facebook: string;
+	instagram: string;
+	twitter: string;
+	youtube: string;
+	saveprofile: string;
+	editprofile: string;
 }
 
 export interface languagesTranslation {
 	header: HeaderTranslations;
 	banner: BannerTranslations;
 	setting: SettingTranslation;
-	footer:FooterTranslation;
-	profile:ProfileTranslation;
+	footer: FooterTranslation;
+	profile: ProfileTranslation;
+}
+
+export interface PageParamsProps {
+	params: {
+		id?: string;
+		redirectRoute?:string;
+	};
 }

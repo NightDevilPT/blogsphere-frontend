@@ -6,6 +6,7 @@ import { TfiLayoutListThumbAlt } from "react-icons/tfi";
 import { blogType } from "@/types/types";
 import LoadingFrame from "../LoadingFrame";
 import BlogFrame from "../BlogFrame";
+import { dummyBlogs } from "@/constants/blogs";
 
 interface IProps {
 	changeLayout?: boolean;
@@ -13,90 +14,9 @@ interface IProps {
 }
 
 const CarouselFrame = ({ changeLayout, title }: IProps) => {
-	const [layout, setLayout] = useState<boolean>(true);
+	const [layout, setLayout] = useState<boolean>(false);
 	const [loading,setLoading]=useState<boolean>(false);
-	const blogs: blogType[] = [
-		{
-			title: "React Tutorial Web Development",
-			description:
-				"A description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping forA description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping for",
-			context: "",
-			likes: 185900,
-			comments: 2000,
-			url: "https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg?cs=srgb&dl=clouds-cloudy-countryside-236047.jpg&fm=jpg",
-			createdAt: 1706244252756,
-		},
-		{
-			title: "React Tutorial Web Development",
-			description:
-				"A description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping forA description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping for",
-			context: "",
-			likes: 185900,
-			comments: 2000,
-			url: "https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg?cs=srgb&dl=clouds-cloudy-countryside-236047.jpg&fm=jpg",
-			createdAt: 1706244252756,
-		},
-		{
-			title: "React Tutorial Web Development",
-			description:
-				"A description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping forA description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping for",
-			context: "",
-			likes: 185900,
-			comments: 2000,
-			url: "https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg?cs=srgb&dl=clouds-cloudy-countryside-236047.jpg&fm=jpg",
-			createdAt: 1706244252756,
-		},
-		{
-			title: "React Tutorial Web Development",
-			description:
-				"A description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping forA description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping for",
-			context: "",
-			likes: 185900,
-			comments: 2000,
-			url: "https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg?cs=srgb&dl=clouds-cloudy-countryside-236047.jpg&fm=jpg",
-			createdAt: 1706244252756,
-		},
-		{
-			title: "React Tutorial Web Development",
-			description:
-				"A description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping forA description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping for",
-			context: "",
-			likes: 185900,
-			comments: 2000,
-			url: "https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg?cs=srgb&dl=clouds-cloudy-countryside-236047.jpg&fm=jpg",
-			createdAt: 1706244252756,
-		},
-		{
-			title: "React Tutorial Web Development",
-			description:
-				"A description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping forA description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping for",
-			context: "",
-			likes: 185900,
-			comments: 2000,
-			url: "https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg?cs=srgb&dl=clouds-cloudy-countryside-236047.jpg&fm=jpg",
-			createdAt: 1706244252756,
-		},
-		{
-			title: "React Tutorial Web Development",
-			description:
-				"A description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping forA description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping for",
-			context: "",
-			likes: 185900,
-			comments: 2000,
-			url: "https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg?cs=srgb&dl=clouds-cloudy-countryside-236047.jpg&fm=jpg",
-			createdAt: 1706244252756,
-		},
-		{
-			title: "React Tutorial Web Development",
-			description:
-				"A description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping forA description puts something in words, like a portrait puts a person in paint. The lawnmower you came home with did not quite fit the description of the dishwasher you went shopping for",
-			context: "",
-			likes: 185900,
-			comments: 2000,
-			url: "https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg?cs=srgb&dl=clouds-cloudy-countryside-236047.jpg&fm=jpg",
-			createdAt: 1706244252756,
-		},
-	];
+	const blogs: blogType[] = dummyBlogs
 
 	setInterval(()=>{
 		setLoading(true);

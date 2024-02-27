@@ -45,7 +45,7 @@ const NavBarFrame = ({ showNav, setShowNav }: IProps) => {
 					{dictionary?.header?.home}
 				</Link>
 				<Link
-					href={"/"}
+					href={"/blogs"}
 					className={`font-mont font-bold text-sm text-slate-50 hover:text-highlight transition-all duration-200`}
 				>
 					{dictionary?.header.blogs}

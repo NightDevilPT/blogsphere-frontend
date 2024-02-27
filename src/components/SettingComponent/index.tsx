@@ -48,6 +48,10 @@ const languageConstants: any = {
 		label: "Spanish",
 		text: "española",
 	},
+	german: {
+		label: "German",
+		text: "Deutsch",
+	},
 };
 
 const SettingComponent = () => {

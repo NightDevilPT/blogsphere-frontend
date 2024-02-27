@@ -1,0 +1,59 @@
+{
+	"header": {
+	  "home": "Startseite",
+	  "blogs": "Blogs",
+	  "contactus": "Kontakt",
+	  "aboutus": "Über uns",
+	  "search": "Suche",
+	  "signup": "Registrieren",
+	  "login": "Anmelden",
+	  "dashboard": "Dashboard",
+	  "myprofile": "Mein Profil",
+	  "editprofile": "Profil bearbeiten",
+	  "setting": "Einstellungen",
+	  "logout": "Abmelden"
+	},
+	"banner": {
+	  "title": "Willkommen bei BlogSphere",
+	  "subtitle": "Willkommen in der Welt des Blogschreibens. Ein großartiger Ort, um sich produktiv und unterhalten zu machen durch tägliche Updates.",
+	  "placeholder": "Jetzt erkunden...",
+	  "search": "Suchen"
+	},
+	"setting": {
+	  "setting": "Einstellungen",
+	  "theme": "Design",
+	  "language": "Sprache",
+	  "languagechange": "Sprache ändern",
+	  "themechange": "Design ändern",
+	  "dark": "Dunkel",
+	  "light": "Hell"
+	},
+	"footer": {
+	  "aboutus": "Über uns",
+	  "address": "Adresse",
+	  "contactus": "Kontaktieren Sie uns",
+	  "title": "Willkommen bei BlogSphere",
+	  "subtitle": "Willkommen in der Welt des Blogschreibens. Ein großartiger Ort, um sich produktiv und unterhalten zu machen durch tägliche Updates.",
+	  "email": "E-Mail",
+	  "description": "Beschreibung",
+	  "submit": "Absenden"
+	},
+	"profile": {
+	  "createprofile": "Profil erstellen",
+	  "updateprofile": "Profil aktualisieren",
+	  "editprofile": "Profil bearbeiten",
+	  "personalinformation": "Persönliche Informationen",
+	  "socialinformation": "Soziale Informationen",
+	  "chooseavtar": "Avatar auswählen",
+	  "firstname": "Vorname",
+	  "lastname": "Nachname",
+	  "gender": "Geschlecht",
+	  "bio": "Biografie",
+	  "facebook": "Facebook",
+	  "instagram": "Instagram",
+	  "twitter": "Twitter",
+	  "youtube": "YouTube",
+	  "saveprofile": "Profil speichern"
+	}
+  }
+  

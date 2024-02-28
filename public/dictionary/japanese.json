@@ -1,0 +1,58 @@
+{
+	"header": {
+		"home": "ホーム",
+		"blogs": "ブログ",
+		"contactus": "お問い合わせ",
+		"aboutus": "会社概要",
+		"search": "検索",
+		"signup": "サインアップ",
+		"login": "ログイン",
+		"dashboard": "ダッシュボード",
+		"myprofile": "マイプロフィール",
+		"editprofile": "プロフィール編集",
+		"setting": "設定",
+		"logout": "ログアウト"
+	},
+	"banner": {
+		"title": "BlogSphereへようこそ",
+		"subtitle": "ブログ執筆の世界へようこそ。毎日の更新を通じて生産性とエンターテインメントを提供する素晴らしい場所です。",
+		"placeholder": "今すぐ探索...",
+		"search": "検索"
+	},
+	"setting": {
+		"setting": "設定",
+		"theme": "テーマ",
+		"language": "言語",
+		"languagechange": "言語の変更",
+		"themechange": "テーマの変更",
+		"dark": "ダーク",
+		"light": "ライト"
+	},
+	"footer": {
+		"aboutus": "私たちについて",
+		"address": "住所",
+		"contactus": "お問い合わせ",
+		"title": "BlogSphereへようこそ",
+		"subtitle": "ブログ執筆の世界へようこそ。毎日の更新を通じて生産性とエンターテインメントを提供する素晴らしい場所です。",
+		"email": "電子メール",
+		"description": "説明",
+		"submit": "送信"
+	},
+	"profile": {
+		"createprofile": "プロフィールを作成",
+		"updateprofile": "プロフィールを更新",
+		"editprofile": "プロフィールを編集",
+		"personalinformation": "個人情報",
+		"socialinformation": "ソーシャル情報",
+		"chooseavtar": "アバターを選択",
+		"firstname": "名",
+		"lastname": "姓",
+		"gender": "性別",
+		"bio": "自己紹介",
+		"facebook": "Facebook",
+		"instagram": "Instagram",
+		"twitter": "Twitter",
+		"youtube": "YouTube",
+		"saveprofile": "プロフィールを保存"
+	}
+}

@@ -40,6 +40,10 @@ const languageConstants: any = {
 		label: "English",
 		text: "English",
 	},
+	hindi: {
+		label: "Hindi",
+		text: "English",
+	},
 	french: {
 		label: "French",
 		text: "française",
@@ -52,6 +56,14 @@ const languageConstants: any = {
 		label: "German",
 		text: "Deutsch",
 	},
+	korean: {
+		label: "Korean",
+		text: "한국인",
+	},
+	japanese: {
+		label: "Japanese",
+		text: "日本語",
+	},
 };
 
 const SettingComponent = () => {
@@ -63,7 +75,7 @@ const SettingComponent = () => {
 			className={`w-full h-[calc(100%-5rem)] flex justify-start items-start gap-5`}
 		>
 			<div
-				className={`w-32 min-w-[130pxx] h-full py-5 flex justify-start items-start flex-col gap-5`}
+				className={`w-32 min-w-[130px] max-sm:w-20 max-sm:min-w-max h-full py-5 flex justify-start items-start flex-col gap-5`}
 			>
 				<button
 					className={`w-full h-auto px-3 py-3 gap-1 rounded flex justify-center items-center flex-col transition-all duration-300 ${
@@ -74,7 +86,7 @@ const SettingComponent = () => {
 					onClick={() => setButton("theme")}
 				>
 					<MdBrightness4 className={`w-5 h-5`} />
-					<span className={`w-full h-auto text-sm font-bold`}>
+					<span className={`w-full h-auto text-sm font-bold max-sm:hidden`}>
 						{dictionary?.setting.theme}
 					</span>
 				</button>
@@ -87,7 +99,7 @@ const SettingComponent = () => {
 					onClick={() => setButton("language")}
 				>
 					<IoLanguage className={`w-5 h-5`} />
-					<span className={`w-full h-auto text-sm font-bold`}>
+					<span className={`w-full h-auto text-sm font-bold max-sm:hidden`}>
 						{dictionary?.setting.language}
 					</span>
 				</button>

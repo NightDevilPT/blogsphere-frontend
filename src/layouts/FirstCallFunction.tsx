@@ -28,6 +28,8 @@ const FirstCallFunction = ({ children }: ChildProps) => {
 		"/auth/signup",
 		"/auth/verify/",
 		"/create-profile",
+		"/create-blog",
+		"/setting"
 	];
 
 	const fetchUser = async () => {

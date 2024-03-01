@@ -1,4 +1,3 @@
-
 export type ChildProps = {
 	children: React.ReactNode;
 };
@@ -32,8 +31,8 @@ export enum HttpMethod {
 }
 
 export interface blogType {
-	id:string;
-	tags:string[];
+	id: string;
+	tags: string[];
 	title: string;
 	url: string;
 	description: string;
@@ -126,6 +125,21 @@ export interface languagesTranslation {
 export interface PageParamsProps {
 	params: {
 		id?: string;
-		redirectRoute?:string;
+		redirectRoute?: string;
 	};
+}
+
+export interface Tags {
+	Technology: string[];
+	Programming: string[];
+	Design: string[];
+	Marketing: string[];
+	Business: string[];
+	Lifestyle: string[];
+	Science: string[];
+	PersonalFinance: string[];
+	Education: string[];
+	Entertainment: string[];
+	HomeAndGarden: string[];
+	Career: string[];
 }

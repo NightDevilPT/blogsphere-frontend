@@ -1,21 +1,38 @@
 import { formatNumber } from "@/services/ConvertCount";
 import { blogType } from "@/types/types";
-import React from "react";
+import React, { useState } from "react";
 
 import { AiFillLike } from "react-icons/ai";
 import { BiSolidCommentDetail } from "react-icons/bi";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface IProps {
 	blogs: blogType;
 }
 
 const HorizontalCardFrame = ({ blogs }: IProps) => {
+	const [errorImage, setErrorImage] = useState<boolean>(false);
+
+	const handleImageError = () => {
+		setErrorImage(true);
+	};
+
 	return (
 		<div
 			className={`relative group min-w-[320px] h-44 flex justify-start items-start gap-1 bg-secondary-bg rounded overflow-hidden cursor-pointer hover:shadow-lg hover:shadow-slate-900/20 transition-all duration-300`}
 		>
-			<div className={` w-28 min-w-[120px] h-full bg-border`}>
-				<img src={blogs.url} className={`w-full h-full object-cover`} alt="blogs-image" />
+			<div className={` w-28 min-w-[120px] h-full bg-border overflow-hidden`}>
+				<LazyLoadImage
+					src={
+						errorImage
+							? "https://via.placeholder.com/800x600.png?text=No+Image"
+							: blogs.url
+					}
+					alt="blogs-images"
+					effect="blur"
+					onError={handleImageError}
+					className="w-full h-full object-cover"
+				/>
 			</div>
 
 			<div

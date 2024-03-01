@@ -480,3 +480,27 @@ body::-webkit-scrollbar-track {
 		background: var(--primary-fg);
 	}
 }
+
+/* Prime Editor Styling */
+.p-multiselect-token{
+	background-color: var(--primary-fg);
+	color: var(--primary-bg);
+}
+
+.p-multiselect-panel{
+	background-color: var(--secondary-bg);
+}
+
+.p-multiselect-header{
+	background-color: var(--secondary-bg);
+}
+
+.p-highlight{
+	background-color: var(--divider);
+}
+
+/* Lazy Loading Image */
+.lazy-load-image-background{
+	width: 100%;
+	height: 100%;
+}

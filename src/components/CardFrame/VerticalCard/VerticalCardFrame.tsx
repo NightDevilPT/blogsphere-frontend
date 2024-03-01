@@ -1,23 +1,35 @@
 import { formatNumber } from "@/services/ConvertCount";
 import { blogType } from "@/types/types";
-import React from "react";
+import React, { useState } from "react";
 import { AiFillLike } from "react-icons/ai";
 import { BiSolidCommentDetail } from "react-icons/bi";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface IProps {
 	blogs: blogType;
 }
 
 const VerticalCardFrame = ({ blogs }: IProps) => {
+	const [errorImage, setErrorImage] = useState<boolean>(false);
+
+	const handleImageError = () => {
+		setErrorImage(true);
+	};
 	return (
 		<div
-			className={`min-w-[320px] h-auto flex justify-start items-start flex-col bg-secondary-bg rounded overflow-hidden hover:shadow-lg hover:shadow-slate-900/20 transition-all duration-300`}
+			className={`min-w-[320px] h-auto flex justify-start items-start flex-col bg-secondary-bg rounded overflow-hidden hover:shadow-lg hover:shadow-slate-900/20 transition-all duration-300 cursor-pointer`}
 		>
-			<div className={`w-full h-40 rounded`}>
-				<img
-					src={blogs.url}
-					className={`w-full h-full object-cover`}
+			<div className={`w-full h-40 overflow-hidden rounded`}>
+				<LazyLoadImage
+					src={
+						errorImage
+							? "https://via.placeholder.com/800x600.png?text=No+Image"
+							: blogs.url
+					}
 					alt="blogs-images"
+					effect="blur"
+					onError={handleImageError}
+					className="w-full h-full object-cover"
 				/>
 			</div>
 			<div

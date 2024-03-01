@@ -1,5 +1,7 @@
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import 'primereact/resources/themes/lara-light-cyan/theme.css';
 
 import ReduxProvide from "@/layouts/ReduxProvide";
 import FirstCallFunction from "@/layouts/FirstCallFunction";
